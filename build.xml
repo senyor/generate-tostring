@@ -1,0 +1,77 @@
+<?xml version="1.0"?>
+
+<project name="tostring" default="init" basedir=".">
+
+    <property file="project.properties"/>
+    <property name="name" value="GenerateToString"/>
+    <property name="src.dir" value="src"/>
+    <property name="src.java.dir" value="src/java"/>
+    <property name="etc.dir" value="src/etc"/>
+    <property name="build7.dir" value="build7"/>
+    <property name="dist.dir" value="dist"/>
+    <property name="dist.work.dir" value="${dist.dir}/work"/>
+    <property name="deploy7.dir" value="${idea7.plugin.dir}"/>
+    <property name="compile" value="modern"/>
+    <property name="compile.debug" value="true"/>
+    <property name="compile.deprecation" value="true"/>
+    <property name="compile.optimize" value="true"/>
+    <property name="compile.target" value="1.5"/>
+    <property name="compile.source" value="1.5"/>
+    <path id="project7.classpath">
+        <fileset dir="d:\idea7\lib" includes="*.jar"/>
+    </path>
+
+    <target name="init">
+        <mkdir dir="${build7.dir}"/>
+        <mkdir dir="${build7.dir}/META-INF"/>
+        <mkdir dir="${dist.dir}"/>
+        <mkdir dir="${dist.work.dir}"/>
+    </target>
+
+    <target name="clean">
+        <delete dir="${build7.dir}"/>
+        <delete dir="${dist.dir}"/>
+    </target>
+
+    <target name="compile7" depends="init">
+        <javac srcdir="${src.java.dir}"
+            destdir="${build7.dir}"
+            debug="true"
+            target="${compile.target}"
+            source="${compile.source}">
+            <classpath refid="project7.classpath"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile7">
+        <delete dir="${dist.work.dir}"/>
+        <copy todir="${dist.work.dir}/resources">
+            <fileset dir="${etc.dir}/resources" excludes="inspectionDescriptions,inspectionDescriptions/*.*"/>
+        </copy>
+        <copy todir="${dist.work.dir}/inspectionDescriptions">
+            <fileset dir="${etc.dir}/resources/inspectionDescriptions"/>
+        </copy>
+        <copy todir="${dist.work.dir}">
+            <fileset dir="${src.java.dir}" includes="**/template/*.vm,**/*.html"/>
+        </copy>
+
+        <copy tofile="${dist.work.dir}/META-INF/plugin.xml" file="${etc.dir}/plugin.xml"/>
+
+        <copy todir="${dist.work.dir}">
+            <fileset dir="${build7.dir}"/>
+        </copy>
+
+        <jar jarfile="${dist.dir}/${name}.jar">
+            <fileset dir="${dist.work.dir}"/>
+            <fileset dir="." file="docs/Readme.txt"/>
+            <fileset dir="." file="docs/Changelog.txt"/>
+            <fileset dir="." file="docs/Contributions.txt.txt"/>
+            <fileset dir="." file="docs/LICENSE-2.0.txt"/>
+        </jar>
+    </target>
+
+    <target name="deploy-idea7" depends="dist">
+        <copy todir="${deploy7.dir}" file="${dist.dir}/${name}.jar"/>
+    </target>
+
+</project>

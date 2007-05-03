@@ -1,0 +1,31 @@
+<idea-plugin>
+    <name>GenerateToString</name>
+    <description>Adds a new action 'toString()' in the generate menu (alt + ins). The action generates a toString() method that dumps the classes fields. Java body code is generated using Velocity Macro and you can change this to fit your needs. The plugin has it's own settings (ctrl + alt + s). Full documentation included (Click hyperlink from Settings).</description>
+    <version>4.0.0</version>
+    <vendor email="cib_rejse@yahoo.dk">Claus Ibsen</vendor>
+    <idea-version since-build="6913"/>
+    <change-notes><![CDATA[
+        <ul>
+            <li>[NEW] Plugin migrated to IDEA 7.x</li>
+            <li>[NEW] Open source (Apache 2.0 license). Hosted at google code. Join if you want to.</li>
+            <li>[NEW] Version number using Apache style.</li>
+        </ul>]]>
+    </change-notes>
+
+    <application-components>
+        <component>
+            <implementation-class>generate.tostring.GenerateToStringPlugin</implementation-class>
+            <interface-class>generate.tostring.GenerateToStringPlugin</interface-class>
+        </component>
+    </application-components>
+
+    <actions>
+        <!-- add toString() in the generate menu (alt + ins) -->
+        <action id="Actions.ActionsPlugin.GenerateToString"
+                class="generate.tostring.GenerateToStringAction" text="to_String()"
+                description="Generate toString() method">
+            <add-to-group group-id="GenerateGroup" anchor="after" relative-to-action="GenerateEquals"/>
+        </action>
+    </actions>
+
+</idea-plugin>
