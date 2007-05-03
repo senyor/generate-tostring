@@ -1,0 +1,45 @@
+'Generate toString()' a plugin for Intellij IDEA
+================================================
+
+Author:
+    Claus Ibsen
+
+Email:
+    cib_rejse@yahoo.dk
+
+Intellij plugin:
+    http://plugins.intellij.net/plugins
+
+Plugin project:
+    http://code.google.com/p/generate-tostring/
+
+Roadmap:
+========
+
+
+Ideas:
+======
+- Feature list on the plugin project
+- Screenshot of run toString() inspections (non on-the-fly)
+- Screenshot of using quick template selection list
+- Include screenshots in plugin documentation
+- Insert at caret position and caret at class then it will insert after the class in the bottom of the file
+- Refactor HandlerImpl to seperate code generator (having Velocity impl for now)
+- Inspection to be smarter for toString() methods that just dump a display name and nothing with dumping fields
+- Insert at caret position and within anonymous class
+- StringBuffer/Builder templates to use singleline if no fields to output
+- Support "insert @Override" in EAP #5557 field chooser dialog
+- Support generating ToString() methods for JDK1.5 enums
+- JDK1.5 (annotations, enum, generic, vararg etc.) in velocity context
+- Insert after/before method (reg exp)
+- Possible to add a display name to TemplateResource to have a different text in template quick selection list than the filename
+- MethodElement to have more information: hasParameters, throwsException and much more.
+- Generate toString() for multiple classes (for fast generation of toString() in classes that for instance has been code generated)
+- Dump protected/packagelocal fields from super instead of super.toString()
+- Use IDEA UI Components instead of Swing in the Settings
+- Redesign Settings UI using IDEA GUI Designer
+- Repaint config icon to use new IDEA style of 'override' icon
+- Use reg.exp. for parsing template code into javadoc, methodbody, template (better validation error displayed)
+- public int compareTo(Object o); template
+- Honor insert position of toString according to rearranger plugin
+- Velocity Macro Syntax integrated to IDEA
