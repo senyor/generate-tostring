@@ -1,20 +1,27 @@
-'Generate toString()' a plugin for Intellij IDEA
-================================================
-
 Author:
-    Claus Ibsen
-
-Email:
-    cib_rejse@yahoo.dk
+    Claus Ibsen (cib_rejse@yahoo.dk)
 
 Intellij plugin:
     http://plugins.intellij.net/plugins
 
-Plugin project:
+Plugin project page:
     http://code.google.com/p/generate-tostring/
 
-Roadmap:
-========
+Wiki:
+    http://code.google.com/p/generate-tostring/w/list
+
+Issue tracker:
+    http://code.google.com/p/generate-tostring/issues/list
+
+
+About:
+======
+Generate toString() is a plugin for Intellij IDEA.
+The plugin adds a new action 'toString()' in the generate menu (alt + ins).
+The action generates a toString() method that dumps the classes fields.
+Java body code is generated using Velocity Macro and you can change this to fit your needs.
+The plugin has it's own settings (ctrl + alt + s).
+Full documentation included (Click the link from Settings).
 
 
 Ideas:

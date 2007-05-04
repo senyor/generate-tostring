@@ -55,7 +55,7 @@ import java.util.*;
  */
 public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler implements GenerateToStringActionHandler {
 
-    private static Logger logger = Logger.getLogger(GenerateToStringActionHandlerImpl.class);
+    private static final Logger logger = Logger.getLogger(GenerateToStringActionHandlerImpl.class);
 
     private PsiAdapter psi;
     private Config config;
@@ -176,11 +176,13 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
             if (displayMememberChooser(filteredFields.length, filteredMethods.length, template)) {
                 logger.debug("Displaying member chooser dialog");
                 PsiElementClassMember[] dialogMembers = GenerateToStringUtils.combineToClassMemberList(filteredFields, filteredMethods);
-                final MemberChooser dialog = new MemberChooser(dialogMembers, true, true, project, true);
+                final MemberChooser dialog = new MemberChooser(dialogMembers, true, true, project, false);
+                // 1nd boolean is ???
+                // 2nd boolean is to preselect all members or none
+                // last boolean is to show/hide Insert @Override option in dialog
                 dialog.setCopyJavadocVisible(false);
                 dialog.selectElements(dialogMembers);
                 dialog.setTitle("Choose members to be included in " + template.getTargetMethodName());
-                dialog.setSize(200, 200);
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         dialog.show();

@@ -283,8 +283,9 @@
     </option>
   </component>
   <component name="StarteamVcsAdapter" />
+  <component name="SvnBranchConfigurationManager" />
   <component name="VcsDirectoryMappings">
-    <mapping directory="" vcs="" />
+    <mapping directory="" vcs="svn" />
   </component>
   <component name="VssVcs" />
   <component name="com.intellij.jsf.UserDefinedFacesConfigs">
