@@ -1,3 +1,8 @@
+v4.0.1 for IDEA 7.x (4-may-2007)
+=================================
+- [NEW] Plugin migrated to IDEA 7.x.
+- [NEW] Changed since-build to 6827 to let the plugin be able to install on IDEA 7.0M1a
+
 v4.0.0 for IDEA 7.x (3-may-2007)
 =================================
 - [NEW] Plugin migrated to IDEA 7.x.
