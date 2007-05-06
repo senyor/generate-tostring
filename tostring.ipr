@@ -283,7 +283,25 @@
     </option>
   </component>
   <component name="StarteamVcsAdapter" />
-  <component name="SvnBranchConfigurationManager" />
+  <component name="SvnBranchConfigurationManager">
+    <option name="myConfigurationMap">
+      <map>
+        <entry key="$PROJECT_DIR$">
+          <value>
+            <SvnBranchConfiguration>
+              <option name="branchUrls">
+                <collection>
+                  <option value="https://generate-tostring.googlecode.com/svn/branches" />
+                  <option value="https://generate-tostring.googlecode.com/svn/tags" />
+                </collection>
+              </option>
+              <option name="trunkUrl" value="https://generate-tostring.googlecode.com/svn/trunk" />
+            </SvnBranchConfiguration>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsDirectoryMappings">
     <mapping directory="" vcs="svn" />
   </component>
