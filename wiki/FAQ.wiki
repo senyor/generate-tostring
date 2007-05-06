@@ -1,5 +1,4 @@
-# FAQ (Frequently Asked Questions)
-
+#labels Featured,FAQ
 = FAQ =
 
   # Q: It would be great if there were an option to call super.toString() as part of the invocation. (Many important fields can live in the super class.).
