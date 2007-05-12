@@ -1,16 +1,22 @@
-v4.0.1 for IDEA 7.x (4-may-2007)
+v4.0.2 for IDEA 7.x (12-may-2007)
 =================================
-- [NEW] Plugin migrated to IDEA 7.x.
+- [NEW] Plugin migrated to IDEA 7.x
+- [BUG] ID8: Upgrade to new plugin.xml format
+- [BUG] ID9: Insert last policy fixed so it handles end of file comments
+
+v4.0.1 for IDEA 7.x (4-may-2007)
+================================
+- [NEW] Plugin migrated to IDEA 7.x
 - [NEW] Changed since-build to 6827 to let the plugin be able to install on IDEA 7.0M1a
 
 v4.0.0 for IDEA 7.x (3-may-2007)
-=================================
-- [NEW] Plugin migrated to IDEA 7.x.
+================================
+- [NEW] Plugin migrated to IDEA 7.x
 - [NEW] Open source (Apache 2.0 license). Hosted at google code. Join if you want to.
-- [NEW] Version number using Apache style.
+- [NEW] Version number using Apache style
 
 v3.27 for IDEA 5.1x and 6.0x (nov-01-2006)
-===========================================
+==========================================
 - [BUG] Plugin documentation extraction fixed for IDEA 5.1.2
 - [BUG] Insert at caret position is now more tolerant (eg. Works now if caret is positioned within a method)
 
@@ -27,14 +33,14 @@ v3.26 for IDEA 5.1x and 6.0x (july-26-2006)
 v3.25 for IDEA 5.1x (june-25-2006)
 ==================================
 - [NEW] Now supports both IDEA 5.x and IDEA 6.x in same .jar file
-- [BUG] Fixed plugin documentation extraction to work with latest EAP and IDEA 5.1.2.
+- [BUG] Fixed plugin documentation extraction to work with latest EAP and IDEA 5.1.2
 - [NEW] Started to refactor code to use JDK1.5 codestyle
 
 v3.24 for IDEA 5.1x (june-17-2006)
 ==================================
 - Compiled with jdk-1.5.0_06 using IDEA EAP #5321
-- [BUG] Fixed plugin documentation extraction to work with latest EAP.
-  Will just continue if the extraction fails, to let it work in future works if IDEA changes again.
+- [BUG] Fixed plugin documentation extraction to work with latest EAP
+  Will just continue if the extraction fails, to let it work in future works if IDEA changes again
 - [NEW] Default concat templates with adding super.toString() at the end
 
 v3.23 for IDEA 5.1x (may-1-2006)
@@ -87,7 +93,7 @@ v3.20 for IDEA 5.1x (jan-28-2006)
 v3.19 for IDEA 5.0x (sep-02-2005)
 =================================
 - Compiled with jdk-1.4.2_05 using IDEA 5.01 #3467
-- [NEW] Default templates for StringBuffer and StringBuilder now idents and uses ' ' to enclose string values.
+- [NEW] Default templates for StringBuffer and StringBuilder now idents and uses ' ' to enclose string values
 - [NEW] Default settings changed to insert toString() at caret position (to be similar to IDEA's generators)
 - [BUG] Default templates now use characters instead of Strings with length of 1 character to honor the inspection 'Single character string concatenation'
 - [BUG] Fixed enabling/disabling template selection checkbox in settings
@@ -113,7 +119,7 @@ v3.16 for IDEA 5.0x (jul-28-2005)
 - Compiled with IDEA EAP build 3424 (Irida)
 - Note: Templates supported in this version is not compatible with plugin v3.00 or older. To upgrade:
   1) Uninstall plugin, 2) Start IDEA without this plugin, 3) Install plugin, 4) Restart IDEA
-- [BUG] On the fly inspection for class does not override toString() method now only highlights the classname instead of the entire class code.
+- [BUG] On the fly inspection for class does not override toString() method now only highlights the classname instead of the entire class code
 - [BUG] toString() is not active in generate menu for Java interfaces
 - [BUG] Default template with StringBuffer now handles getter methods
 - [NEW] Default template for JDK1.5 StringBuilder included
@@ -131,7 +137,7 @@ v3.14 for IDEA 5.0x
 - Compiled with IDEA EAP build 3296 (Irida)
 - Note: Templates supported in this version is not compatible with plugin v3.00 or older. To upgrade:
   1) Uninstall plugin, 2) Start IDEA without this plugin, 3) Install plugin, 4) Restart IDEA
-- [NEW] Error dialog shown if template is not compatible with the new style used in v3.10 or later.
+- [NEW] Error dialog shown if template is not compatible with the new style used in v3.10 or later
 - [BUG] Fresh installation of this plugin had trouble using the default template
 - [BUG] Fixed linebreak problem caused by IDEA 3296
 
