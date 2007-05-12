@@ -56,6 +56,9 @@ public class DummyTestBean extends Config implements Serializable {
 
     private DummyTestBean singleton = null;
 
+    public DummyTestBean getSingleton() {
+        return singleton;
+    }
 
     @Override
     public String toString() {
@@ -68,10 +71,4 @@ public class DummyTestBean extends Config implements Serializable {
         sb.append('}');
         return sb.toString();
     }
-
-    public DummyTestBean getSingleton() {
-        return singleton;
-    }
-
-
-}
+} // END

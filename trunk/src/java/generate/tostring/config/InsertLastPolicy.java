@@ -17,6 +17,7 @@ package generate.tostring.config;
 
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiMethod;
+import com.intellij.psi.PsiElement;
 import com.intellij.util.IncorrectOperationException;
 import generate.tostring.psi.PsiAdapter;
 import generate.tostring.psi.PsiAdapterFactory;
@@ -54,7 +55,8 @@ public class InsertLastPolicy implements InsertNewMethodPolicy {
         }
 
         // otherwise add it at the end
-        clazz.addBefore(newMethod, clazz.getLastChild()); // to avoid problem with enums fields - we must use getLastChild()
+        PsiElement last = clazz.getRBrace(); // rbrace is the last } java token. fixes bug #9
+        clazz.addBefore(newMethod, last);
 
         return true;
     }
