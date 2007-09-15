@@ -1,3 +1,8 @@
+v4.0.3 for IDEA 7.x
+=================================
+- [NEW] Build using JDK1.6 that is shipped with IDEA
+- [BUG] ID10: Generated code inserted into wrong place
+
 v4.0.2 for IDEA 7.x (12-may-2007)
 =================================
 - [NEW] Plugin migrated to IDEA 7.x

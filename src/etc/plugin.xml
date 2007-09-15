@@ -2,14 +2,12 @@
 <idea-plugin url="http://code.google.com/p/generate-tostring">
     <name>GenerateToString</name>
     <description>Adds a new action 'toString()' in the generate menu (alt + ins). The action generates a toString() method that dumps the classes fields. Java body code is generated using Velocity Macro and you can change this to fit your needs. The plugin has it's own settings (ctrl + alt + s). Full documentation included (Click hyperlink from Settings).</description>
-    <version>4.0.2</version>
+    <version>4.0.3</version>
     <vendor email="cib_rejse@yahoo.dk" url="http://code.google.com/p/generate-tostring">Claus Ibsen</vendor>
     <idea-version since-build="6827"/>
     <change-notes><![CDATA[
         <ul>
-            <li>[NEW] Plugin migrated to IDEA 7.x</li>
-            <li>[BUG] ID8: Upgrade to new plugin.xml format</li>
-            <li>[BUG] ID9: Insert last policy fixed so it handles end of file comments</li>
+            <li>[BUG] ID10: Generated code inserted into wrong place</li>
         </ul>]]>
     </change-notes>
     <application-components>

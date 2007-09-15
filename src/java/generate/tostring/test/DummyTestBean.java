@@ -60,15 +60,13 @@ public class DummyTestBean extends Config implements Serializable {
         return singleton;
     }
 
-    @Override
+
     public String toString() {
-        final StringBuilder sb = new StringBuilder();
-        sb.append("DummyTestBean");
-        sb.append("{tran='").append(tran).append('\'');
-        sb.append(", bday=").append(bday);
-        sb.append(", salary=").append(salary);
-        sb.append(", singleton=").append(singleton);
-        sb.append('}');
-        return sb.toString();
+        return "DummyTestBean{" +
+                "tran='" + tran + '\'' +
+                ", bday=" + bday +
+                ", salary=" + salary +
+                ", singleton=" + singleton +
+                '}';
     }
-} // END
+}

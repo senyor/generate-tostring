@@ -51,7 +51,12 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
             clazz.addAfter(newMethod, spot);
         } else {
             // okay fallback to just insert at current position
-            clazz.addAfter(newMethod, cur);
+            if (clazz.getRBrace() == cur) {
+                // ID 10: If cur positon is last brace (right) of the clazz we should insert before
+                clazz.addBefore(newMethod, cur);
+            } else {
+                clazz.addAfter(newMethod, cur);
+            }
         }
 
         return true;
