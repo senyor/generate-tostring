@@ -20,8 +20,8 @@ import com.intellij.psi.PsiElementFactory;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.util.IncorrectOperationException;
+import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
-import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * This policy is to create a duplicate <code>toString</code> method.
@@ -29,7 +29,6 @@ import generate.tostring.psi.PsiAdapterFactory;
 public class DuplicatePolicy implements ConflictResolutionPolicy {
 
     private static final DuplicatePolicy instance = new DuplicatePolicy();
-    private static PsiAdapter psi;
     private static InsertNewMethodPolicy newMethodPolicy;
 
     private DuplicatePolicy() {
@@ -44,20 +43,12 @@ public class DuplicatePolicy implements ConflictResolutionPolicy {
     }
 
     public boolean applyMethod(PsiClass clazz, PsiMethod existingMethod, PsiMethod newMethod) throws IncorrectOperationException {
-        // lazy initialize otherwise IDEA throws error: Component requests are not allowed before they are created
-        if (psi == null)
-            psi = PsiAdapterFactory.getPsiAdapter();
-
         newMethodPolicy.insertNewMethod(clazz, newMethod);
-
         return true;
     }
 
     public boolean applyJavaDoc(PsiClass clazz, PsiMethod newMethod, PsiElementFactory elementFactory, CodeStyleManager codeStyleManager, String existingJavaDoc, String newJavaDoc) throws IncorrectOperationException {
-        // lazy initialize otherwise IDEA throws error: Component requests are not allowed before they are created
-        if (psi == null)
-            psi = PsiAdapterFactory.getPsiAdapter();
-
+        PsiAdapter psi = GenerateToStringContext.getPsi();
         String text = newJavaDoc != null ? newJavaDoc : existingJavaDoc; // prefer to use new javadoc
 
         if (psi.addOrReplaceJavadoc(elementFactory, codeStyleManager, newMethod, text, true) != null) {

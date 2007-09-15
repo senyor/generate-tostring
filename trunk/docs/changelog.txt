@@ -1,7 +1,9 @@
-v4.0.3 for IDEA 7.x
+v4.0.3 for IDEA 7.x (15-sep-2007)
 =================================
 - [NEW] Build using JDK1.6 that is shipped with IDEA
 - [BUG] ID10: Generated code inserted into wrong place
+- [BUG] ID11: Memory Leak in GenerateToStringContext
+- [BUG] ID12: Generated code inserted into wrong place (before class)
 
 v4.0.2 for IDEA 7.x (12-may-2007)
 =================================

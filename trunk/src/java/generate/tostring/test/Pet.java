@@ -26,12 +26,6 @@ public class Pet {
     private Date birthDay;
     private Owner owner;
 
-    public Date getBirthDay() {
-        return birthDay;
-    }
-    public void setBirthDay(Date birthDay) {
-        this.birthDay = birthDay;
-    }
     public String getName() {
         return name;
     }
@@ -41,8 +35,33 @@ public class Pet {
     public Owner getOwner() {
         return owner;
     }
-    public void setOwner(Owner owner) {
-        this.owner = owner;
+    public Date getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(Date birthDay) {
+        this.birthDay = birthDay;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Pet pet = (Pet) o;
+
+        if (!birthDay.equals(pet.birthDay)) return false;
+        if (!name.equals(pet.name)) return false;
+        if (!owner.equals(pet.owner)) return false;
+
+        return true;
+    }
+
+    public int hashCode() {
+        int result;
+        result = name.hashCode();
+        result = 31 * result + birthDay.hashCode();
+        result = 31 * result + owner.hashCode();
+        return result;
     }
 
     public String toString() {
@@ -51,5 +70,9 @@ public class Pet {
                 ", birthDay=" + birthDay +
                 ", owner=" + owner +
                 '}';
+    }
+
+    public void setOwner(Owner owner) {
+        this.owner = owner;
     }
 }
