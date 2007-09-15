@@ -15,6 +15,8 @@
  */
 package generate.tostring.config;
 
+import com.intellij.openapi.editor.Editor;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.util.IncorrectOperationException;
 import generate.tostring.GenerateToStringContext;
@@ -42,8 +44,12 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
         if (psi == null) {
             psi = PsiAdapterFactory.getPsiAdapter();
         }
+        
+        Project project = GenerateToStringContext.getProject();
+        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, psi.getPsiManager(project));
+        Editor editor = psi.getSelectedEditor(project);
 
-        PsiElement cur = psi.findElementAtCursorPosition(GenerateToStringContext.getJavaFile(), GenerateToStringContext.getEditor());
+        PsiElement cur = psi.findElementAtCursorPosition(javaFile, editor);
 
         // find better spot to insert, since cur can be anything
         PsiElement spot = findBestSpotToInsert(cur);

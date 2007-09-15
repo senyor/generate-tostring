@@ -15,17 +15,14 @@
  */
 package generate.tostring;
 
-import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
-import com.intellij.openapi.project.ProjectManager;
 import com.intellij.psi.PsiElementFactory;
-import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
 import com.intellij.psi.codeStyle.CodeStyleManager;
-import org.apache.log4j.Logger;
 import generate.tostring.config.Config;
 import generate.tostring.psi.PsiAdapter;
 import generate.tostring.psi.PsiAdapterFactory;
+import org.apache.log4j.Logger;
 
 /**
  * Application context for this plugin.
@@ -36,12 +33,6 @@ public class GenerateToStringContext {
     private static PsiAdapter psi;
     private static Config config;
     private static Project project;
-    private static PsiJavaFile javaFile;
-    private static Editor editor;
-
-    static {
-        psi = PsiAdapterFactory.getPsiAdapter();
-    }
 
     public static Config getConfig() {
         if (config == null) {
@@ -59,24 +50,14 @@ public class GenerateToStringContext {
         project = newProject;
     }
 
-    public static void setJavaFile(PsiJavaFile newJavaFile) {
-        javaFile = newJavaFile;
-    }
-
-    public static void setEditor(Editor newEditor) {
-        editor = newEditor;
-    }
-
     public static PsiAdapter getPsi() {
+        if (psi == null) {
+            psi = PsiAdapterFactory.getPsiAdapter();
+        }
         return psi;
     }
 
     public static Project getProject() {
-        if (project == null) {
-            log.warn("Getting first opened project - assuming it is current project");
-            Project[] projects = ProjectManager.getInstance().getOpenProjects();
-            project = projects[0];
-        }
         return project;
     }
 
@@ -92,12 +73,13 @@ public class GenerateToStringContext {
         return psi.getCodeStyleManager(getProject());
     }
 
-    public static PsiJavaFile getJavaFile() {
-        return javaFile;
-    }
-
-    public static Editor getEditor() {
-        return editor;
+    /**
+     * Cleanup any resources when the project is closed 
+     */
+    public static void dispose() {
+        project = null;
+        psi = null;
+        config = null;
     }
 
 }

@@ -19,15 +19,18 @@ import com.intellij.codeInspection.InspectionToolProvider;
 import com.intellij.openapi.components.ApplicationComponent;
 import com.intellij.openapi.options.Configurable;
 import com.intellij.openapi.options.ConfigurationException;
+import com.intellij.openapi.project.Project;
+import com.intellij.openapi.project.ProjectManager;
+import com.intellij.openapi.project.ProjectManagerListener;
 import com.intellij.openapi.util.InvalidDataException;
 import com.intellij.openapi.util.JDOMExternalizable;
 import com.intellij.openapi.util.WriteExternalException;
-import org.apache.log4j.Logger;
 import generate.tostring.config.Config;
 import generate.tostring.exception.PluginException;
 import generate.tostring.inspection.ClassHasNoToStringMethodInspection;
 import generate.tostring.inspection.FieldNotUsedInToStringInspection;
 import generate.tostring.view.ConfigUI;
+import org.apache.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
@@ -36,7 +39,7 @@ import java.io.IOException;
 /**
  * The IDEA component for this plugin.
  */
-public class GenerateToStringPlugin implements ApplicationComponent, Configurable, JDOMExternalizable, InspectionToolProvider {
+public class GenerateToStringPlugin implements ApplicationComponent, Configurable, JDOMExternalizable, InspectionToolProvider, ProjectManagerListener {
 
     private static Logger log = Logger.getLogger(GenerateToStringPlugin.class);
     private ConfigUI configUI;
@@ -54,9 +57,13 @@ public class GenerateToStringPlugin implements ApplicationComponent, Configurabl
         } catch (IOException e) {
             throw new PluginException("Error extracting documentation from jarfile", e);
         }
+
+        // ID 11: Register our project listener so we can do resource cleanup when projects are closing
+        ProjectManager.getInstance().addProjectManagerListener(this);
     }
 
     public void disposeComponent() {
+        ProjectManager.getInstance().removeProjectManagerListener(this);
     }
 
     public String getDisplayName() {
@@ -124,5 +131,20 @@ public class GenerateToStringPlugin implements ApplicationComponent, Configurabl
                              FieldNotUsedInToStringInspection.class };
     }
 
+
+    public void projectOpened(Project project) {
+        GenerateToStringContext.setProject(project);
+    }
+
+    public boolean canCloseProject(Project project) {
+        return true;
+    }
+
+    public void projectClosed(Project project) {
+    }
+
+    public void projectClosing(Project project) {
+        GenerateToStringContext.dispose();
+    }
 
 }
