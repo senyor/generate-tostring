@@ -45,4 +45,11 @@ public class Pet {
         this.owner = owner;
     }
 
+    public String toString() {
+        return "Pet{" +
+                "name='" + name + '\'' +
+                ", birthDay=" + birthDay +
+                ", owner=" + owner +
+                '}';
+    }
 }

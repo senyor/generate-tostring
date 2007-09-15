@@ -33,6 +33,11 @@ public abstract class DummyModelTestBean {
             return false;
         }
 
+        public String toString() {
+            return "MyInnerClass{" +
+                    "title='" + title + '\'' +
+                    '}';
+        }
     }
 
     public String getName() {
@@ -69,6 +74,8 @@ public abstract class DummyModelTestBean {
 
 
     public String toString() {
-        return "DummyModelTestBean{}";
+        return "DummyModelTestBean{" +
+                "age='" + age + '\'' +
+                '}';
     }
 }

@@ -15,6 +15,7 @@
  */
 package generate.tostring;
 
+import com.intellij.codeInsight.generation.PsiElementClassMember;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.ide.util.MemberChooser;
 import com.intellij.openapi.actionSystem.DataContext;
@@ -29,10 +30,6 @@ import com.intellij.psi.*;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.psi.javadoc.PsiDocComment;
 import com.intellij.util.IncorrectOperationException;
-import com.intellij.codeInsight.generation.PsiElementClassMember;
-import org.apache.log4j.Logger;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
 import generate.tostring.config.Config;
 import generate.tostring.config.ConflictResolutionPolicy;
 import generate.tostring.config.DuplicatePolicy;
@@ -45,6 +42,9 @@ import generate.tostring.util.StringUtil;
 import generate.tostring.velocity.VelocityFactory;
 import generate.tostring.view.MethodExistsDialog;
 import generate.tostring.view.TemplateSelectionActionDialog;
+import org.apache.log4j.Logger;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
 
 import javax.swing.*;
 import java.io.StringWriter;
@@ -62,89 +62,60 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
     private Project project;
     private PsiElementFactory elementFactory;
     private CodeStyleManager codeStyleManager;
+    private Editor editor;
     private PsiJavaFile javaFile;
     private PsiClass clazz;
-    private Editor editor;
 
     public void executeWriteAction(Editor editor, DataContext dataContext) {
-        Project project = GenerateToStringContext.getPsi().getProject(dataContext);
-        if (project == null) {
-            return; // silently ignore since no project is opened.
-        } else {
-            GenerateToStringContext.setProject(project);
-        }
-
-        PsiAdapter psi = GenerateToStringContext.getPsi();
-
+        this.psi = GenerateToStringContext.getPsi();
         PsiJavaFile javaFile = psi.getSelectedJavaFile(dataContext);
-        GenerateToStringContext.setJavaFile(javaFile);
-
         PsiClass clazz = psi.getCurrentClass(javaFile, editor);
-        this.editor = editor;
-        GenerateToStringContext.setEditor(this.editor);
 
-        doExecuteAction(project, clazz, javaFile, null, null);
+        doExecuteAction(clazz, javaFile, null, null);
     }
 
-    public void executeActionTemplateQuickSelection(final Project project, final PsiClass clazz, TemplateResource quickTemplate, InsertNewMethodPolicy insertPolicy) {
-        if (project == null) {
-            return; // silently ignore since no project is opened.
-        } else {
-            GenerateToStringContext.setProject(project);
-        }
-
+    public void executeActionTemplateQuickSelection(final Project project, final PsiClass clazz, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
         if (quickTemplate == null) {
             throw new IllegalArgumentException("No quick selection template selected");
         }
 
-        GenerateToStringContext.setProject(project);
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        this.psi = GenerateToStringContext.getPsi();
         PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
-        this.editor = psi.getSelectedEditor(project);
-        GenerateToStringContext.setEditor(this.editor);
 
-        doExecuteAction(project, clazz, javaFile, quickTemplate, insertPolicy);
+        doExecuteAction(clazz, javaFile, quickTemplate, insertPolicy);
     }
 
 
-    public void executeActionQickFix(Project project, PsiClass clazz, ProblemDescriptor desc, InsertNewMethodPolicy insertPolicy) {
-        if (project == null) {
-            return; // silently ignore since no project is opened.
-        } else {
-            GenerateToStringContext.setProject(project);
-        }
-
-        GenerateToStringContext.setProject(project);
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+    public void executeActionQickFix(final Project project, final PsiClass clazz, final ProblemDescriptor desc, final InsertNewMethodPolicy insertPolicy) {
+        this.psi = GenerateToStringContext.getPsi();
         PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
-        this.editor = psi.getSelectedEditor(project);
-        GenerateToStringContext.setEditor(this.editor);
 
-        doExecuteAction(project, clazz, javaFile, null, insertPolicy);
+        doExecuteAction(clazz, javaFile, null, insertPolicy);
     }
 
     /**
      * Entry for performing the action and code generation.
      *
-     * @param project         the project, must not be null
      * @param clazz           the class, must not be null
      * @param javaFile        the javafile, must not be null
      * @param quickTemplate   use this quick template, if null then the default template is used
      * @param insertPolicy    overrule to use this policy (usually by quickfix), null to use default
      */
-    private void doExecuteAction(final Project project, final PsiClass clazz, final PsiJavaFile javaFile, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
+    private void doExecuteAction(final PsiClass clazz, final PsiJavaFile javaFile, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
         logger.debug("+++ doExecuteAction - START +++");
-        if (project == null || clazz == null || javaFile == null) {
-            return; // silently ignore since no project is opened or clazz/javafile not provided.
+        if (clazz == null || javaFile == null) {
+            return; // silently ignore since no clazz or javafile provided
         }
 
-        this.project = project;
+        // set instance variabels
+        this.project = GenerateToStringContext.getProject();
         this.javaFile = javaFile;
         this.clazz = clazz;
         this.psi = GenerateToStringContext.getPsi();
         this.config = GenerateToStringContext.getConfig();
         this.elementFactory = GenerateToStringContext.getElementFactory();
         this.codeStyleManager = GenerateToStringContext.getCodeStyleManager();
+        this.editor = psi.getSelectedEditor(project);
 
         if (quickTemplate == null && config.isEnableTemplateQuickList()) {
             // display quick template dialog
@@ -224,9 +195,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
         // convert semi colon based String to List of Strings
         List<String> options = new ArrayList<String>();
         String[] text = selected.split(";");
-        for (String s : text) {
-            options.add(s);
-        }
+        options.addAll(Arrays.asList(text));
 
         TemplateSelectionActionDialog dialog = new TemplateSelectionActionDialog(project, clazz, options, "Select template to use", insertPolicy);
         dialog.show();
@@ -243,20 +212,24 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
      */
     private boolean displayMememberChooser(int numberOfFields, int numberOfMethods, TemplateResource template) {
         // do not show if disabled in settings
-        if (! config.isUseFieldChooserDialog())
+        if (! config.isUseFieldChooserDialog()) {
             return false;
+        }
 
         // if using reflection in toString() body code then do not display dialog
-        if (template.getMethodBody() != null && template.getMethodBody().indexOf("getDeclaredFields()") != -1)
+        if (template.getMethodBody() != null && template.getMethodBody().indexOf("getDeclaredFields()") != -1) {
             return false;
+        }
 
         // must be at least one field for selection
-        if (! config.enableMethods && numberOfFields == 0)
+        if (! config.enableMethods && numberOfFields == 0) {
             return false;
+        }
 
         // must be at least one field or method for selection
-        if (config.enableMethods && Math.max(numberOfFields, numberOfMethods) == 0)
+        if (config.enableMethods && Math.max(numberOfFields, numberOfMethods) == 0) {
             return false;
+        }
 
         return true;
     }
@@ -499,8 +472,9 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
      * @throws GenerateCodeException is thrown when there is an error generating the javacode.
      */
     private String velocityGenerateCode(Collection<PsiMember> selectedMembers, Map<String, String> params, TemplateResource template, String templateMacro) throws GenerateCodeException {
-        if (templateMacro == null)
+        if (templateMacro == null) {
             return null;
+        }
 
         StringWriter sw = new StringWriter();
         try {
