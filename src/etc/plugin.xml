@@ -8,6 +8,8 @@
     <change-notes><![CDATA[
         <ul>
             <li>[BUG] ID10: Generated code inserted into wrong place</li>
+            <li>[BUG] ID11: Memory Leak in GenerateToStringContext</li>
+            <li>[BUG] ID12: Generated code inserted into wrong place (before class)</li>
         </ul>]]>
     </change-notes>
     <application-components>

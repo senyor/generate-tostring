@@ -16,11 +16,11 @@
 package generate.tostring.config;
 
 import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiMethod;
 import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiMethod;
 import com.intellij.util.IncorrectOperationException;
+import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
-import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * Inserts the method last in the javafile.
@@ -28,7 +28,6 @@ import generate.tostring.psi.PsiAdapterFactory;
 public class InsertLastPolicy implements InsertNewMethodPolicy {
 
     private static final InsertLastPolicy instance = new InsertLastPolicy();
-    private static PsiAdapter psi;
 
     private InsertLastPolicy() {
     }
@@ -38,10 +37,7 @@ public class InsertLastPolicy implements InsertNewMethodPolicy {
     }
 
     public boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod) throws IncorrectOperationException {
-        // lazy initialize otherwise IDEA throws error: Component requests are not allowed before they are created
-        if (psi == null) {
-            psi = PsiAdapterFactory.getPsiAdapter();
-        }
+        PsiAdapter psi = GenerateToStringContext.getPsi();
 
         // if main method exists and is the last then add toString just before main method
         PsiMethod mainMethod = psi.findPublicStaticVoidMainMethod(clazz);

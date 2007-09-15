@@ -21,8 +21,6 @@ import com.intellij.psi.*;
 import com.intellij.util.IncorrectOperationException;
 import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
-import generate.tostring.psi.PsiAdapterFactory;
-
 
 /**
  * Inserts the method at the caret position.
@@ -30,7 +28,6 @@ import generate.tostring.psi.PsiAdapterFactory;
 public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
 
     private static final InsertAtCaretPolicy instance = new InsertAtCaretPolicy();
-    private static PsiAdapter psi;
 
     private InsertAtCaretPolicy() {
     }
@@ -40,28 +37,25 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
     }
 
     public boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod) throws IncorrectOperationException {
-        // lazy initialize otherwise IDEA throws error: Component requests are not allowed before they are created
-        if (psi == null) {
-            psi = PsiAdapterFactory.getPsiAdapter();
-        }
-        
         Project project = GenerateToStringContext.getProject();
+        PsiAdapter psi = GenerateToStringContext.getPsi();
         PsiJavaFile javaFile = psi.getSelectedJavaFile(project, psi.getPsiManager(project));
         Editor editor = psi.getSelectedEditor(project);
 
+        // find the element the cursor is postion on
         PsiElement cur = psi.findElementAtCursorPosition(javaFile, editor);
 
-        // find better spot to insert, since cur can be anything
+        // find better spot to insert, since cur can be anywhere
         PsiElement spot = findBestSpotToInsert(cur);
         if (spot != null) {
             clazz.addAfter(newMethod, spot);
         } else {
-            // okay fallback to just insert at current position
-            if (clazz.getRBrace() == cur) {
-                // ID 10: If cur positon is last brace (right) of the clazz we should insert before
-                clazz.addBefore(newMethod, cur);
+            // could not find a good spot so the cursor is in a strage position
+            // ID 10 and ID 12: insert inside clazz even if cursor is outside the right and left brace of the class
+            if (beforeRightBrace(cur, clazz)) {
+                clazz.addAfter(newMethod, clazz.getLBrace());
             } else {
-                clazz.addAfter(newMethod, cur);
+                clazz.addBefore(newMethod, clazz.getRBrace());
             }
         }
 
@@ -96,6 +90,14 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
         } else {
             return null;
         }
+    }
+
+    private static boolean beforeRightBrace(PsiElement elem, PsiClass clazz) {
+        if (clazz == null || clazz.getRBrace() == null) {
+            return true; // if no brace assume yes
+        }
+
+        return elem.getTextOffset() < clazz.getRBrace().getTextOffset();
     }
 
     public String toString() {
