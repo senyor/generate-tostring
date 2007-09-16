@@ -5,6 +5,7 @@ Intellij plugin:
     http://plugins.intellij.net/plugins
 
 Plugin project page:
+    http://generate-tostring.googlecode.com
     http://code.google.com/p/generate-tostring/
 
 Wiki:
