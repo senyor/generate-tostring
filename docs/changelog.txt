@@ -1,3 +1,7 @@
+v4.0.4 for IDEA 7.x (16-sep-2007)
+=================================
+- This is just as v4.0.3 but targeted to JDK1.5 to support Mac users (I wish I had a Mac, they are fab)
+
 v4.0.3 for IDEA 7.x (15-sep-2007)
 =================================
 - [NEW] Build using JDK1.6 that is shipped with IDEA

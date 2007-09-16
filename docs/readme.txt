@@ -13,6 +13,8 @@ Wiki:
 Issue tracker:
     http://code.google.com/p/generate-tostring/issues/list
 
+Forum - genereate toString() release announcements:
+    http://www.intellij.net/forums/thread.jspa?threadID=267303&tstart=0
 
 About:
 ======
@@ -26,11 +28,9 @@ Full documentation included (Click the link from Settings).
 
 Ideas:
 ======
-- Feature list on the plugin project
 - Screenshot of run toString() inspections (non on-the-fly)
 - Screenshot of using quick template selection list
 - Include screenshots in plugin documentation
-- Insert at caret position and caret at class then it will insert after the class in the bottom of the file
 - Refactor HandlerImpl to seperate code generator (having Velocity impl for now)
 - Inspection to be smarter for toString() methods that just dump a display name and nothing with dumping fields
 - Insert at caret position and within anonymous class
@@ -50,3 +50,4 @@ Ideas:
 - public int compareTo(Object o); template
 - Honor insert position of toString according to rearranger plugin
 - Velocity Macro Syntax integrated to IDEA
+- Use IDEA edtitor for template editing
