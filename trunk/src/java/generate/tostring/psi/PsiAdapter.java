@@ -41,16 +41,6 @@ public abstract class PsiAdapter {
     }
 
     /**
-     * Get's the IDEA project.
-     *
-     * @param dataContext data context.
-     * @return IDEA project.
-     */
-    public Project getProject(DataContext dataContext) {
-        return (Project) dataContext.getData(DataConstants.PROJECT);
-    }
-
-    /**
      * Get's the PSIManager.
      *
      * @param project IDEA project.
@@ -58,20 +48,6 @@ public abstract class PsiAdapter {
      */
     public PsiManager getPsiManager(Project project) {
         return PsiManager.getInstance(project);
-    }
-
-    /**
-     * Convenience method to get the selected Java file given a {@link DataContext}.
-     * This form of the method is provided purely for convenience.
-     *
-     * @param context Data context
-     * @return Currently selected Java file or null if no file is selected or the selected
-     *         file is not a Java file
-     * @see #getSelectedJavaFile(Project,PsiManager)
-     */
-    public PsiJavaFile getSelectedJavaFile(DataContext context) {
-        Project project = getProject(context);
-        return getSelectedJavaFile(project, getPsiManager(project));
     }
 
     /**

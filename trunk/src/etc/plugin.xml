@@ -2,15 +2,13 @@
 <idea-plugin url="http://code.google.com/p/generate-tostring">
     <name>GenerateToString</name>
     <description>Adds a new action 'toString()' in the generate menu (alt + ins). The action generates a toString() method that dumps the classes fields. Java body code is generated using Velocity Macro and you can change this to fit your needs. The plugin has it's own settings (ctrl + alt + s). Full documentation included (Click hyperlink from Settings).</description>
-    <version>4.0.4</version>
+    <version>4.0.5</version>
     <vendor email="cib_rejse@yahoo.dk" url="http://code.google.com/p/generate-tostring">Claus Ibsen</vendor>
     <idea-version since-build="7000"/>
     <change-notes><![CDATA[
         <ul>
-            <li>This is just as v4.0.3 but targeted to JDK1.5 to support Mac users (I wish I had a Mac, they are fab)</li>
-            <li>[BUG] ID10: Generated code inserted into wrong place</li>
-            <li>[BUG] ID11: Memory Leak in GenerateToStringContext</li>
-            <li>[BUG] ID12: Generated code inserted into wrong place (before class)</li>
+            <li>ID13 - Remove usage of @deprecated IDEA API</li>
+            <li>ID14 - Generated code inserted into wrong place (class javadoc)</li>
         </ul>]]>
     </change-notes>
     <application-components>

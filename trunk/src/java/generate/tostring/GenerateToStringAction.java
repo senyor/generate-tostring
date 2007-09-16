@@ -19,8 +19,10 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
+import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
+import com.intellij.psi.PsiManager;
 
 /**
  * The IDEA action for this plugin.
@@ -46,7 +48,10 @@ public class GenerateToStringAction extends EditorAction {
      * @param dataContext  data context.
      */
     public void update(Editor editor, Presentation presentation, DataContext dataContext) {
-        PsiJavaFile javaFile = GenerateToStringContext.getPsi().getSelectedJavaFile(dataContext);
+        Project project = GenerateToStringContext.getProject();
+        PsiManager manager = GenerateToStringContext.getManager(); 
+
+        PsiJavaFile javaFile = GenerateToStringContext.getPsi().getSelectedJavaFile(project, manager);
         if (javaFile == null) {
             presentation.setEnabled(false);
             return;
