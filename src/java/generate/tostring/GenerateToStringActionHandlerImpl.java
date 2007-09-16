@@ -68,7 +68,8 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
 
     public void executeWriteAction(Editor editor, DataContext dataContext) {
         this.psi = GenerateToStringContext.getPsi();
-        PsiJavaFile javaFile = psi.getSelectedJavaFile(dataContext);
+        this.project = GenerateToStringContext.getProject();
+        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
         PsiClass clazz = psi.getCurrentClass(javaFile, editor);
 
         doExecuteAction(clazz, javaFile, null, null);

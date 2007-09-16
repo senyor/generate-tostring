@@ -1,3 +1,8 @@
+v4.0.5 for IDEA 7.x
+=================================
+- [TASK] ID13: Remove usage of @deprecated IDEA API
+- [BUG]  ID14: Generated code inserted into wrong place (class javadoc)
+
 v4.0.4 for IDEA 7.x (16-sep-2007)
 =================================
 - This is just as v4.0.3 but targeted to JDK1.5 to support Mac users (I wish I had a Mac, they are fab)
@@ -219,7 +224,7 @@ v2.18 for IDEA 3.0x/4.0x/4.5 (jul-9-2004)
 =========================================
 - Compiled with IDEA EAP build 2178 (Pallada)
 - Fixed bug to detect IDEA version for build 2178, now assuming IDEA 4.x/4.5x series as default to avoid problems if JetBrains changes name pattern in the future
-- Fixed bug to autosave templates in plugin folder for build 2178 - now moved to USER_HOME\.IntelliJIdea\config\plugins\tostring-plugin
+- Fixed bug to autosave templates in plugin folder for build 2178 - now moved to USER_HOME\.IntelliJIdea\generateToStringSettings\plugins\tostring-plugin
 
 v2.17 for IDEA 3.0x/4.0x/4.5 (jul-6-2004)
 =========================================
@@ -296,7 +301,7 @@ v2.11 for IDEA 3.x/4.x (mar-24-2004)
 - $set autoImportPackages(packagenames) in Veolicty Template will automatic import these packages (see AdvancadTemplate.vm)
 - Packagename seperation must now only be comma (to be consistent)
 - Import of packagename now handles all kind of formats (java.text, java.text.*, java.text.SimpleDateFormat)
-- Fixed NPE when config.getMethodBody() is null and invoking the action
+- Fixed NPE when generateToStringSettings.getMethodBody() is null and invoking the action
 - Always displayed an error dialog if any exception was thrown from the action
 - Exception hieracy implemented
 - Severe exceptions is raised to IDEA for alerting user
