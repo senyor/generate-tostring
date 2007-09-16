@@ -45,18 +45,21 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
         // find the element the cursor is postion on
         PsiElement cur = psi.findElementAtCursorPosition(javaFile, editor);
 
-        // find better spot to insert, since cur can be anywhere
-        PsiElement spot = findBestSpotToInsert(cur);
-        if (spot != null) {
-            clazz.addAfter(newMethod, spot);
-        } else {
-            // could not find a good spot so the cursor is in a strage position
-            // ID 10 and ID 12: insert inside clazz even if cursor is outside the right and left brace of the class
-            if (beforeRightBrace(cur, clazz)) {
-                clazz.addAfter(newMethod, clazz.getLBrace());
+        // ID 10, ID 12, ID14: handle caret position can be outside the class braces
+        if (beforeLeftBrace(cur, clazz)) {
+            clazz.addAfter(newMethod, clazz.getLBrace());
+        } else if (beforeRightBrace(cur, clazz)) {
+            // assuming within the clazz, try find better spot to insert, since cur can be anywhere
+            PsiElement spot = findBestSpotToInsert(cur);
+            if (spot != null) {
+                clazz.addAfter(newMethod, spot);
             } else {
-                clazz.addBefore(newMethod, clazz.getRBrace());
+                // default to add it after the current position
+                clazz.addAfter(newMethod, cur);
             }
+        } else {
+            // caret is at/after the right brace so add it before
+            clazz.addBefore(newMethod, clazz.getRBrace());
         }
 
         return true;
@@ -98,6 +101,14 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
         }
 
         return elem.getTextOffset() < clazz.getRBrace().getTextOffset();
+    }
+
+    private static boolean beforeLeftBrace(PsiElement elem, PsiClass clazz) {
+        if (clazz == null || clazz.getLBrace() == null) {
+            return true; // if no brace assume yes
+        }
+
+        return elem.getTextOffset() < clazz.getLBrace().getTextOffset();
     }
 
     public String toString() {
