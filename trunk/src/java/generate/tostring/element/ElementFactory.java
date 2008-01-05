@@ -17,8 +17,8 @@ package generate.tostring.element;
 
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
-import org.apache.log4j.Logger;
 import generate.tostring.psi.PsiAdapter;
+import org.apache.log4j.Logger;
 
 /**
  * Factory for creating {@link FieldElement} or {@link ClassElement} objects.

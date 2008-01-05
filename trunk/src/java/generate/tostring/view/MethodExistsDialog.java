@@ -15,7 +15,6 @@
  */
 package generate.tostring.view;
 
-import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import generate.tostring.config.CancelPolicy;
 import generate.tostring.config.ConflictResolutionPolicy;
@@ -46,12 +45,11 @@ public class MethodExistsDialog {
      *    <li/>Cancel
      * </ul>
      *
-     * @param project            the project
      * @param targetMethodName   the name of the target method (toString)
      * @return the chosen conflict resolution policy (never null)
      */
-    public static ConflictResolutionPolicy showDialog(Project project, String targetMethodName) {
-        int exit = Messages.showYesNoCancelDialog(project, "Replace existing " + targetMethodName + " method", "Method Already Exists", Messages.getQuestionIcon());
+    public static ConflictResolutionPolicy showDialog(String targetMethodName) {
+        int exit = Messages.showYesNoCancelDialog("Replace existing " + targetMethodName + " method", "Method Already Exists", Messages.getQuestionIcon());
         if (exit == JOptionPane.CLOSED_OPTION || exit == JOptionPane.CANCEL_OPTION) {
             return CancelPolicy.getInstance();
         } else if (exit == JOptionPane.YES_OPTION) {

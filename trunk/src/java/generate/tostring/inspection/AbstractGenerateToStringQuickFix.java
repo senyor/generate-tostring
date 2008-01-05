@@ -16,8 +16,8 @@
 package generate.tostring.inspection;
 
 import com.intellij.codeInspection.LocalQuickFix;
-import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -28,7 +28,7 @@ public abstract class AbstractGenerateToStringQuickFix implements LocalQuickFix 
     protected PsiAdapter psi;
 
     public AbstractGenerateToStringQuickFix() {
-        psi = GenerateToStringContext.getPsi();
+        psi = PsiAdapterFactory.getPsiAdapter();
     }
 
     @NotNull

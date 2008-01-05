@@ -19,8 +19,8 @@ import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiMethod;
 import com.intellij.util.IncorrectOperationException;
-import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * Inserts the method last in the javafile.
@@ -37,7 +37,7 @@ public class InsertLastPolicy implements InsertNewMethodPolicy {
     }
 
     public boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod) throws IncorrectOperationException {
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
 
         // if main method exists and is the last then add toString just before main method
         PsiMethod mainMethod = psi.findPublicStaticVoidMainMethod(clazz);

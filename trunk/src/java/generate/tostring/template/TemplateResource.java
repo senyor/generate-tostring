@@ -94,8 +94,6 @@ public class TemplateResource implements Serializable {
      * Gets the method signature
      * <p/>
      * <code>public String toString()</code>
-     *
-     * @since 3.10
      */
     public String getMethodSignature() {
         return getMethodSignature(template);
@@ -125,8 +123,6 @@ public class TemplateResource implements Serializable {
 
     /**
      * Get's the method that this template is for (toString)
-     * 
-     * @since 3.10
      */
     public String getTargetMethodName() {
         String s = getMethodSignature();
@@ -139,7 +135,6 @@ public class TemplateResource implements Serializable {
      * Validates this template to see if its valid for plugin v3.10 or higher.
      *
      * @return  true if valid, false if not
-     * @since 3.14
      */
     public boolean isValidTemplate() {
         return isValidTemplate(template);
@@ -150,7 +145,6 @@ public class TemplateResource implements Serializable {
      *
      * @param template  the template to validate.
      * @return  true if valid, false if not.
-     * @since 3.15
      */
     public static boolean isValidTemplate(String template) {
         template = template.trim();
@@ -180,7 +174,6 @@ public class TemplateResource implements Serializable {
      * Does the template use annotations?
      *
      * @return  true if so, false if not.
-     * @since 3.22
      */
     public boolean hasAnnotations() {
         return getAnnotations() != null;
@@ -190,7 +183,6 @@ public class TemplateResource implements Serializable {
      * Get's the annotations
      *
      * @return  the annotation, null if does not have.
-     * @since 3.22
      */
     public String[] getAnnotations() {
         String signature = getMethodSignature();
@@ -229,6 +221,5 @@ public class TemplateResource implements Serializable {
     public String toString() {
         return fileName != null ? fileName : template;
     }
-
 
 }

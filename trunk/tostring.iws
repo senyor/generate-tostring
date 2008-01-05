@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project relativePaths="false" version="4">
+  <component name="AnalysisUIOptions">
+    <option name="CUSTOM_SCOPE_NAME" value="Project Files" />
+  </component>
   <component name="CCaseConfig">
     <option name="checkoutReserved" value="false" />
     <option name="markExternalChangeAsUpToDate" value="true" />
@@ -9,13 +12,42 @@
     <option name="synchOutside" value="false" />
     <option name="isHistoryResticted" value="true" />
     <option name="useIdenticalSwitch" value="true" />
+    <option name="synchActivitiesOnRefresh" value="true" />
     <option name="lastScr" value="" />
     <option name="scrTextFileName" value="" />
-    <option name="lastViewType" />
     <option name="historyRevisionsNumber" value="4" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" name="Default" comment="" />
+    <list default="true" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/test/DummyCompleteTestBean.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/test/DummyCompleteTestBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/inspection/ClassHasNoToStringMethodInspection.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/inspection/ClassHasNoToStringMethodInspection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$" afterPath="$PROJECT_DIR$" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringContext.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringContext.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tostring.ipr" afterPath="$PROJECT_DIR$/tostring.ipr" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/docs/changelog.txt" afterPath="$PROJECT_DIR$/docs/changelog.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/etc/plugin.xml" afterPath="$PROJECT_DIR$/src/etc/plugin.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringPlugin.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringPlugin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/config/InsertLastPolicy.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/config/InsertLastPolicy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tostring.iml" afterPath="$PROJECT_DIR$/tostring.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/template/TemplateResource.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/template/TemplateResource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/config/InsertAtCaretPolicy.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/config/InsertAtCaretPolicy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/view/TemplateSelectionActionDialog.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/view/TemplateSelectionActionDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractToStringInsepction.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractToStringInsepction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/inspection/FieldNotUsedInToStringInspection.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/inspection/FieldNotUsedInToStringInspection.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractGenerateToStringQuickFix.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractGenerateToStringQuickFix.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/config/DuplicatePolicy.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/config/DuplicatePolicy.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/package.html" afterPath="$PROJECT_DIR$/src/java/generate/tostring/package.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringUtils.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringUtils.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/view/MethodExistsDialog.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/view/MethodExistsDialog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/template/TemplateResourceLocator.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/template/TemplateResourceLocator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tostring.iws" afterPath="$PROJECT_DIR$/tostring.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/test/Owner.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/test/Owner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringActionHandlerImpl.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringActionHandlerImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/view/ConfigUI.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/view/ConfigUI.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/element/ElementFactory.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/element/ElementFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/psi/PsiAdapterFactory.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/psi/PsiAdapterFactory.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringAction.java" afterPath="$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringAction.java" />
+    </list>
   </component>
   <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
   <component name="Commander">
@@ -87,7 +119,17 @@
     <favorites_list name="tostring" />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="changelog.txt" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/docs/changelog.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="353" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FindManager">
     <FindUsagesManager>
@@ -102,6 +144,20 @@
   <component name="ModuleEditorState">
     <option name="LAST_EDITED_MODULE_NAME" />
     <option name="LAST_EDITED_TAB_NAME" />
+  </component>
+  <component name="PackagesPane">
+    <subPane>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PackageViewModuleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </subPane>
   </component>
   <component name="ProjectLevelVcsManager">
     <OptionsSetting value="true" id="Add" />
@@ -121,6 +177,24 @@
         <PATH_ELEMENT>
           <option name="myItemId" value="tostring" />
           <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+      </PATH>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewModuleNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="PsiDirectory:D:\project\generate-tostring" />
+          <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
         </PATH_ELEMENT>
       </PATH>
     </subPane>
@@ -143,13 +217,13 @@
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="0.16666667" version="1" splitterProportion="0.5">
-      <flattenPackages />
+      <flattenPackages PackagesPane="true" />
       <showMembers />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages />
-      <abbreviatePackageNames />
-      <showStructure ProjectPane="false" />
+      <abbreviatePackageNames PackagesPane="true" />
+      <showStructure PackagesPane="false" ProjectPane="false" />
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
@@ -169,7 +243,72 @@
       <recent name="generate.tostring" />
     </key>
   </component>
+  <component name="RubyDocSettings">
+    <RUBY_DOC NAME="DEFAULTS" VALUE="TRUE" />
+    <RUBY_DOC NAME="NUMBER" VALUE="0" />
+  </component>
   <component name="RunManager">
+    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="RubyRunConfigurationType" factoryName="Ruby test">
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TESTS_FOLDER_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_SCRIPT_PATH" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_CLASS_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_FILE_MASK" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_METHOD_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="TEST_TEST_TYPE" VALUE="TEST_SCRIPT" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="RUBY_ARGS" VALUE="-e &quot;STDOUT.sync=true;STDERR.sync=true;load($0=ARGV.shift)&quot;" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="WORK DIR" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="MODULE_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="SHOULD_USE_SDK" VALUE="false" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="ALTERN_SDK_NAME" VALUE="" />
+      <RTEST_RUN_CONFIG_SETTINGS_ID NAME="INHERITANCE_CHECK_DISABLED" VALUE="false" />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="ADDITIONAL_CLASS_PATH" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="wholeProject" />
+      </option>
+      <envs />
+      <method>
+        <option name="Make" value="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG" enabled="false" merge="false">
       <module name="" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -186,47 +325,18 @@
       <option name="OUTPUT_DIRECTORY" />
       <option name="ANNOTATION_TYPE" />
       <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
       <option name="ADDITIONAL_CLASS_PATH" />
       <option name="TEST_SEARCH_SCOPE">
         <value defaultName="wholeProject" />
       </option>
       <option name="PROPERTIES_FILE" />
+      <envs />
       <properties />
       <listeners />
       <method>
         <option name="Make" value="true" />
       </method>
-    </configuration>
-    <configuration default="true" type="JUnit" factoryName="JUnit" enabled="false" merge="false">
-      <module name="" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="ADDITIONAL_CLASS_PATH" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="wholeProject" />
-      </option>
-      <method>
-        <option name="Make" value="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="Application" factoryName="Application" enabled="false" merge="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <module name="" />
     </configuration>
     <configuration default="true" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
@@ -234,18 +344,6 @@
       <option name="SHMEM_ADDRESS" value="javadebug" />
       <option name="HOST" value="localhost" />
       <option name="PORT" value="5005" />
-    </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
     </configuration>
     <list size="0" />
     <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
@@ -304,12 +402,12 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="10" y="6" width="1660" height="1010" extended-state="0" />
-    <editor active="false" />
+    <frame x="10" y="10" width="1660" height="1010" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298005" order="3" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="8" />
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3298005" order="3" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="1" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="4" />
@@ -317,17 +415,18 @@
       <window_info id="IDEtalk" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="8" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="7" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="7" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="1" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" order="0" />
       <window_info id="Maven projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
       <window_info id="Module Dependencies" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="3" />
-      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24953213" order="0" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24953213" order="0" />
+      <window_info id="Dependency Viewer" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.6122931" order="8" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3995272" order="6" />
-      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="8" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="2" />
+      <window_info id="Duplicates" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="8" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32978722" order="2" />
+      <window_info id="DSM" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32938242" order="3" x="110" y="110" width="1460" height="810" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="5" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" order="0" />
       <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" order="2" />
@@ -403,100 +502,119 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/openapi/actionSystem/DataConstants.class">
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringActionHandlerImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="21" selection-start="236" selection-end="236" vertical-scroll-proportion="0.25708884">
+        <state line="200" column="127" selection-start="9736" selection-end="9736" vertical-scroll-proportion="0.35375">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractGenerateToStringQuickFix.java">
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/package.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="32" selection-start="833" selection-end="833" vertical-scroll-proportion="0.19281663">
+        <state line="117" column="79" selection-start="8126" selection-end="8126" vertical-scroll-proportion="0.95478725">
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="HtmlPreview">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/docs/license.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/inspection/AbstractToStringInsepction.java">
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/openapi/fileEditor/impl/text/TextEditorComponent.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="23" selection-start="739" selection-end="739" vertical-scroll-proportion="0.12854442">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/config/InsertAtCaretPolicy.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="0" selection-start="1764" selection-end="1764" vertical-scroll-proportion="-0.56319016">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/openapi.jar!/com/intellij/openapi/util/DefaultJDOMExternalizer.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="13" selection-start="186" selection-end="186" vertical-scroll-proportion="0.14875">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/jre/jre/lib/rt.jar!/java/lang/Object.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="28" selection-start="564" selection-end="564" vertical-scroll-proportion="0.37546012">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringPlugin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="35" selection-start="1966" selection-end="1966" vertical-scroll-proportion="0.22495274">
+        <state line="5" column="12" selection-start="178" selection-end="178" vertical-scroll-proportion="0.085">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/view/ConfigUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="477" column="76" selection-start="21511" selection-end="21511" vertical-scroll-proportion="0.33268481">
+        <state line="17" column="0" selection-start="654" selection-end="654" vertical-scroll-proportion="-0.89299613">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/psi/idea7/PsiAdapter7.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="28" column="13" selection-start="1001" selection-end="1001" vertical-scroll-proportion="0.16687116">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringActionHandlerImpl.java">
+    <entry file="file://$PROJECT_DIR$/docs/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="3044" selection-end="3044" vertical-scroll-proportion="0.38375">
+        <state line="38" column="30" selection-start="1420" selection-end="1420" vertical-scroll-proportion="0.5411043">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/GenerateToStringAction.java">
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/inspection/ClassHasNoToStringMethodInspection.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="32" column="13" selection-start="1194" selection-end="1194" vertical-scroll-proportion="0.08220859">
+        <state line="152" column="8" selection-start="6387" selection-end="6387" vertical-scroll-proportion="0.02173913">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/test/DummyTestBean.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="63" column="18" selection-start="2050" selection-end="2050" vertical-scroll-proportion="0.7013802">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/element/ElementUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="71" column="2" selection-start="2653" selection-end="2653" vertical-scroll-proportion="0.065">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/template/TemplateResourceLocator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="133" column="10" selection-start="5668" selection-end="5668" vertical-scroll-proportion="0.04375">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/inspection/FieldNotUsedInToStringInspection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="61" column="8" selection-start="2271" selection-end="2271" vertical-scroll-proportion="0.02125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/psi/PsiAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="52" column="0" selection-start="1740" selection-end="1740" vertical-scroll-proportion="0.2975">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/generate/tostring/test/Pet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="13" selection-start="726" selection-end="726" vertical-scroll-proportion="0.020858895">
+        <state line="1212" column="88" selection-start="40238" selection-end="40238" vertical-scroll-proportion="0.02125">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/etc/plugin.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="9" column="59" selection-start="830" selection-end="830" vertical-scroll-proportion="0.19640565">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.7556675">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/changelog.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="43" selection-start="246" selection-end="246" vertical-scroll-proportion="0.1275">
+        <state line="0" column="0" selection-start="0" selection-end="353" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>

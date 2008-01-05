@@ -19,10 +19,13 @@ import com.intellij.openapi.actionSystem.DataContext;
 import com.intellij.openapi.actionSystem.Presentation;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.actionSystem.EditorAction;
+import com.intellij.openapi.editor.actionSystem.EditorActionHandler;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import com.intellij.psi.PsiJavaFile;
 import com.intellij.psi.PsiManager;
+import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * The IDEA action for this plugin.
@@ -48,16 +51,17 @@ public class GenerateToStringAction extends EditorAction {
      * @param dataContext  data context.
      */
     public void update(Editor editor, Presentation presentation, DataContext dataContext) {
-        Project project = GenerateToStringContext.getProject();
-        PsiManager manager = GenerateToStringContext.getManager(); 
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
+        Project project = editor.getProject();
+        PsiManager manager = psi.getPsiManager(project);
 
-        PsiJavaFile javaFile = GenerateToStringContext.getPsi().getSelectedJavaFile(project, manager);
+        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, manager);
         if (javaFile == null) {
             presentation.setEnabled(false);
             return;
         }
 
-        PsiClass clazz = GenerateToStringContext.getPsi().getCurrentClass(javaFile, editor);
+        PsiClass clazz = psi.getCurrentClass(javaFile, editor);
         if (clazz == null) {
             presentation.setEnabled(false);
             return;
@@ -67,5 +71,7 @@ public class GenerateToStringAction extends EditorAction {
         presentation.setEnabled(! clazz.isInterface());
     }
 
-
+    protected GenerateToStringAction(EditorActionHandler editorActionHandler) {
+    super(editorActionHandler);    //To change body of overridden methods use File | Settings | File Templates.
+}
 }

@@ -18,9 +18,6 @@ package generate.tostring.view;
 import com.intellij.ide.BrowserUtil;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.ui.HyperlinkLabel;
-import org.apache.velocity.VelocityContext;
-import org.apache.velocity.app.VelocityEngine;
-import org.apache.velocity.exception.ParseErrorException;
 import generate.tostring.GenerateToStringUtils;
 import generate.tostring.config.Config;
 import generate.tostring.config.ConflictResolutionPolicy;
@@ -33,6 +30,9 @@ import generate.tostring.template.TemplateResourceLocator;
 import generate.tostring.util.FileUtil;
 import generate.tostring.util.StringUtil;
 import generate.tostring.velocity.VelocityFactory;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.exception.ParseErrorException;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -58,6 +58,8 @@ import java.util.List;
  * The configuration is in the menu <b>File - Settings - GenerateToString</b>
  */
 public class ConfigUI extends JPanel {
+
+
 
     private static final String DEFAULT_TEMPLATE_FILENAME_EXTENSION = ".vm";
     public static final TemplateResource activeTemplate = new TemplateResource("--> Active Template <--", TemplateResourceLocator.getDefaultTemplateBody());
@@ -92,11 +94,12 @@ public class ConfigUI extends JPanel {
     private JTextField autoImportPackages = new JTextField();
 
     private JComboBox templates;
-    private JButton activateNewTemplate = new JButton("Activate this template");
+    private JButton activateNewTemplate = new JButton("Use this template");
     private JButton saveTemplate = new JButton("Save template");
     private JButton syntaxCheck = new JButton("Syntax check");
 
     private JTextArea methodBody = new JTextArea();
+
     private TitledBorder templateBodyBorder;
     private JScrollPane templateBodyScrollPane;
     private static final String templateBodyBorderTitle = "Method body - Velocity Macro Language - ";

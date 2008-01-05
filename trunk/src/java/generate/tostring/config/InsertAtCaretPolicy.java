@@ -19,8 +19,8 @@ import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.project.Project;
 import com.intellij.psi.*;
 import com.intellij.util.IncorrectOperationException;
-import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * Inserts the method at the caret position.
@@ -37,8 +37,9 @@ public class InsertAtCaretPolicy implements InsertNewMethodPolicy {
     }
 
     public boolean insertNewMethod(PsiClass clazz, PsiMethod newMethod) throws IncorrectOperationException {
-        Project project = GenerateToStringContext.getProject();
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        Project project = clazz.getProject();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
+
         PsiJavaFile javaFile = psi.getSelectedJavaFile(project, psi.getPsiManager(project));
         Editor editor = psi.getSelectedEditor(project);
 

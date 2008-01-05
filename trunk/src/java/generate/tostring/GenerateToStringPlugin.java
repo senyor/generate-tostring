@@ -133,7 +133,6 @@ public class GenerateToStringPlugin implements ApplicationComponent, Configurabl
 
 
     public void projectOpened(Project project) {
-        GenerateToStringContext.setProject(project);
     }
 
     public boolean canCloseProject(Project project) {
@@ -144,7 +143,6 @@ public class GenerateToStringPlugin implements ApplicationComponent, Configurabl
     }
 
     public void projectClosing(Project project) {
-        GenerateToStringContext.dispose();
     }
 
 }

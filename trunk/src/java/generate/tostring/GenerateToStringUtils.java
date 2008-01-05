@@ -15,16 +15,15 @@
  */
 package generate.tostring;
 
+import com.intellij.codeInsight.generation.PsiElementClassMember;
+import com.intellij.codeInsight.generation.PsiFieldMember;
+import com.intellij.codeInsight.generation.PsiMethodMember;
 import com.intellij.openapi.application.PathManager;
 import com.intellij.openapi.editor.Editor;
 import com.intellij.openapi.editor.EditorFactory;
 import com.intellij.openapi.project.Project;
 import com.intellij.openapi.ui.Messages;
 import com.intellij.psi.*;
-import com.intellij.codeInsight.generation.PsiElementClassMember;
-import com.intellij.codeInsight.generation.PsiFieldMember;
-import com.intellij.codeInsight.generation.PsiMethodMember;
-import org.apache.log4j.Logger;
 import generate.tostring.config.FilterPattern;
 import generate.tostring.element.ElementFactory;
 import generate.tostring.element.FieldElement;
@@ -32,7 +31,9 @@ import generate.tostring.element.MethodElement;
 import generate.tostring.exception.GenerateCodeException;
 import generate.tostring.exception.PluginException;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 import generate.tostring.util.FileUtil;
+import org.apache.log4j.Logger;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -170,7 +171,7 @@ public class GenerateToStringUtils {
      */
     public static void handleExeption(Project project, Exception e) throws RuntimeException {
         e.printStackTrace(); // must print stacktrace to see caused in IDEA log / console
-        log.error("", e);
+        log.error(e);
 
         if (e instanceof GenerateCodeException) {
             // code generation error - display velocity errror in error dialog so user can identify problem quicker
@@ -196,9 +197,9 @@ public class GenerateToStringUtils {
      * @return the clazz, <tt>null</tt> if not found
      */
     public static PsiClass getCurrentClass(Editor editor) {
-        PsiAdapter psi = GenerateToStringContext.getPsi();
-        PsiManager manager = GenerateToStringContext.getManager();
-        Project project = GenerateToStringContext.getProject();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
+        Project project = editor.getProject();
+        PsiManager manager = psi.getPsiManager(project);
         PsiJavaFile javaFile = psi.getSelectedJavaFile(project, manager);
         if (javaFile == null) {
             return null; // silently ignore since it's not a javafile.
@@ -283,7 +284,7 @@ public class GenerateToStringUtils {
     public static void extractDocumentation() throws IOException {
         log.debug("Extracting documentation +++ START +++");
 
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
         String inf = psi.getPluginFilename();
 
         if (inf == null) {
