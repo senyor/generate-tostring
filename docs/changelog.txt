@@ -1,7 +1,9 @@
-v4.0.5 for IDEA 7.x
+v4.0.5 for IDEA 7.x (05-jan-2008)
 =================================
-- [TASK] ID13: Remove usage of @deprecated IDEA API
+- [TASK] ID13: Remove usage of @deprecated IDEA API (partly done)
 - [BUG]  ID14: Generated code inserted into wrong place (class javadoc)
+- [BUG]  ID15: Plugin stops working if two frames are open in Idea 7.0.1
+- [BUG]  ID16: Internal IDE exception thrown for IDEA 7.0.1 (build #7364)
 
 v4.0.4 for IDEA 7.x (16-sep-2007)
 =================================

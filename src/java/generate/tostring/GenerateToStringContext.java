@@ -15,13 +15,7 @@
  */
 package generate.tostring;
 
-import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiElementFactory;
-import com.intellij.psi.PsiManager;
-import com.intellij.psi.codeStyle.CodeStyleManager;
 import generate.tostring.config.Config;
-import generate.tostring.psi.PsiAdapter;
-import generate.tostring.psi.PsiAdapterFactory;
 import org.apache.log4j.Logger;
 
 /**
@@ -30,9 +24,7 @@ import org.apache.log4j.Logger;
 public class GenerateToStringContext {
 
     private static Logger log = Logger.getLogger(GenerateToStringContext.class);
-    private static PsiAdapter psi;
     private static Config config;
-    private static Project project;
 
     public static Config getConfig() {
         if (config == null) {
@@ -44,42 +36,6 @@ public class GenerateToStringContext {
 
     public static void setConfig(Config newConfig) {
         config = newConfig;
-    }
-
-    public static void setProject(Project newProject) {
-        project = newProject;
-    }
-
-    public static PsiAdapter getPsi() {
-        if (psi == null) {
-            psi = PsiAdapterFactory.getPsiAdapter();
-        }
-        return psi;
-    }
-
-    public static Project getProject() {
-        return project;
-    }
-
-    public static PsiManager getManager() {
-        return psi.getPsiManager(getProject());
-    }
-
-    public static PsiElementFactory getElementFactory() {
-        return psi.getPsiElemetFactory(getManager());
-    }
-
-    public static CodeStyleManager getCodeStyleManager() {
-        return psi.getCodeStyleManager(getProject());
-    }
-
-    /**
-     * Cleanup any resources when the project is closed 
-     */
-    public static void dispose() {
-        project = null;
-        psi = null;
-        config = null;
     }
 
 }

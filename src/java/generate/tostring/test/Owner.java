@@ -102,17 +102,6 @@ public class Owner {
         return result;
     }
 
-    public String toString() {
-        return "Owner{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", street1='" + street1 + '\'' +
-                ", street2='" + street2 + '\'' +
-                ", zip='" + zip + '\'' +
-                ", phone='" + phone + '\'' +
-                '}';
-    }
-
     public void kill() {
         // kill it
     }

@@ -37,6 +37,7 @@ import generate.tostring.config.InsertNewMethodPolicy;
 import generate.tostring.element.*;
 import generate.tostring.exception.GenerateCodeException;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 import generate.tostring.template.TemplateResource;
 import generate.tostring.util.StringUtil;
 import generate.tostring.velocity.VelocityFactory;
@@ -45,6 +46,7 @@ import generate.tostring.view.TemplateSelectionActionDialog;
 import org.apache.log4j.Logger;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.VelocityEngine;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import java.io.StringWriter;
@@ -60,6 +62,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
     private PsiAdapter psi;
     private Config config;
     private Project project;
+    private PsiManager manager;
     private PsiElementFactory elementFactory;
     private CodeStyleManager codeStyleManager;
     private Editor editor;
@@ -67,12 +70,12 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
     private PsiClass clazz;
 
     public void executeWriteAction(Editor editor, DataContext dataContext) {
-        this.psi = GenerateToStringContext.getPsi();
-        this.project = GenerateToStringContext.getProject();
-        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
+        this.psi = PsiAdapterFactory.getPsiAdapter();
+        this.project = editor.getProject();
+        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, psi.getPsiManager(project));
         PsiClass clazz = psi.getCurrentClass(javaFile, editor);
 
-        doExecuteAction(clazz, javaFile, null, null);
+        doExecuteAction(project, clazz, null, null);
     }
 
     public void executeActionTemplateQuickSelection(final Project project, final PsiClass clazz, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
@@ -80,43 +83,39 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
             throw new IllegalArgumentException("No quick selection template selected");
         }
 
-        this.psi = GenerateToStringContext.getPsi();
-        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
-
-        doExecuteAction(clazz, javaFile, quickTemplate, insertPolicy);
+        doExecuteAction(project, clazz, quickTemplate, insertPolicy);
     }
 
 
     public void executeActionQickFix(final Project project, final PsiClass clazz, final ProblemDescriptor desc, final InsertNewMethodPolicy insertPolicy) {
-        this.psi = GenerateToStringContext.getPsi();
-        PsiJavaFile javaFile = psi.getSelectedJavaFile(project, GenerateToStringContext.getManager());
-
-        doExecuteAction(clazz, javaFile, null, insertPolicy);
+        doExecuteAction(project, clazz, null, insertPolicy);
     }
 
     /**
      * Entry for performing the action and code generation.
      *
-     * @param clazz           the class, must not be null
-     * @param javaFile        the javafile, must not be null
-     * @param quickTemplate   use this quick template, if null then the default template is used
-     * @param insertPolicy    overrule to use this policy (usually by quickfix), null to use default
+     * @param project         the project, must not be <tt>null<tt>
+     * @param clazz           the class, must not be <tt>null<tt>
+     * @param quickTemplate   use this quick template, if <tt>null</tt> then the default template is used
+     * @param insertPolicy    overrule to use this policy (usually by quickfix), <tt>null</tt> to use default
      */
-    private void doExecuteAction(final PsiClass clazz, final PsiJavaFile javaFile, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
+    private void doExecuteAction(@NotNull final Project project, @NotNull final PsiClass clazz, final TemplateResource quickTemplate, final InsertNewMethodPolicy insertPolicy) {
         logger.debug("+++ doExecuteAction - START +++");
-        if (clazz == null || javaFile == null) {
-            return; // silently ignore since no clazz or javafile provided
+
+        if (logger.isDebugEnabled()) {
+            logger.debug("Current project " + project.getName());
         }
 
-        // set instance variabels
-        this.project = GenerateToStringContext.getProject();
-        this.javaFile = javaFile;
+        // set all instance variabels
+        this.project = project;
         this.clazz = clazz;
-        this.psi = GenerateToStringContext.getPsi();
+        this.psi = PsiAdapterFactory.getPsiAdapter();
+        this.javaFile = psi.getSelectedJavaFile(project, psi.getPsiManager(project));
         this.config = GenerateToStringContext.getConfig();
-        this.elementFactory = GenerateToStringContext.getElementFactory();
-        this.codeStyleManager = GenerateToStringContext.getCodeStyleManager();
         this.editor = psi.getSelectedEditor(project);
+        this.manager = psi.getPsiManager(project);
+        this.elementFactory = psi.getPsiElemetFactory(manager);
+        this.codeStyleManager = psi.getCodeStyleManager(project);
 
         if (quickTemplate == null && config.isEnableTemplateQuickList()) {
             // display quick template dialog
@@ -130,7 +129,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
 
         // is it a valid template
         if (!template.isValidTemplate()) {
-            Messages.showWarningDialog(project, "The template is incompatible with this version of the plugin. See the default templates for compatible samples.", "Incompatible Template");
+            Messages.showWarningDialog("The template is incompatible with this version of the plugin. See the default templates for compatible samples.", "Incompatible Template");
             return;
         }
 
@@ -154,7 +153,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
                 // last boolean is to show/hide Insert @Override option in dialog
                 dialog.setCopyJavadocVisible(false);
                 dialog.selectElements(dialogMembers);
-                dialog.setTitle("Choose members to be included in " + template.getTargetMethodName());
+                dialog.setTitle("Choose Members for " + template.getTargetMethodName());
                 SwingUtilities.invokeLater(new Runnable() {
                     public void run() {
                         dialog.show();
@@ -185,6 +184,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
     /**
      * Display the quick template selection dialog.
      *
+     * @param insertPolicy  the policy choosen
      * @return  true if a template was selected and thus would be handled by this action, false if no quick templates to select.
      */
     private boolean displayQuickTemplateDialog(InsertNewMethodPolicy insertPolicy) {
@@ -198,7 +198,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
         String[] text = selected.split(";");
         options.addAll(Arrays.asList(text));
 
-        TemplateSelectionActionDialog dialog = new TemplateSelectionActionDialog(project, clazz, options, "Select template to use", insertPolicy);
+        TemplateSelectionActionDialog dialog = new TemplateSelectionActionDialog(project, clazz, options, "Select Template to use", insertPolicy);
         dialog.show();
         return true;
     }
@@ -308,7 +308,7 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
                 return def;
             } else {
                 // no, so ask user what to do
-                return MethodExistsDialog.showDialog(project, template.getTargetMethodName());
+                return MethodExistsDialog.showDialog(template.getTargetMethodName());
             }
         }
 
@@ -511,16 +511,15 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
             
             // velocity
             VelocityEngine velocity = VelocityFactory.getVelocityEngine();
-            logger.debug("Executing velocity +++START+++");
+            logger.debug("Executing velocity +++ START +++");
             velocity.evaluate(vc, sw, this.getClass().getName(), templateMacro);
-            logger.debug("Executing velocity +++END+++");
+            logger.debug("Executing velocity +++ END +++");
 
             // any additional packages to import returned from velocity?
             if (vc.get("autoImportPackages") != null) {
                 params.put("autoImportPackages", (String) vc.get("autoImportPackages"));
             }
 
-            // TODO move to afterCreate method
             // add java.io.Serializable if choosen in [settings] and does not already implements it
             if (config.isAddImplementSerializable() && !ce.isImplements("java.io.Serializable")) {
                 psi.addImplements(project, clazz, "java.io.Serializable");
@@ -532,5 +531,6 @@ public class GenerateToStringActionHandlerImpl extends EditorWriteActionHandler 
 
         return sw.getBuffer().toString();
     }
+
 
 }

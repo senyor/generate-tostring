@@ -19,13 +19,13 @@ import com.intellij.codeInspection.InspectionManager;
 import com.intellij.codeInspection.ProblemDescriptor;
 import com.intellij.codeInspection.ProblemHighlightType;
 import com.intellij.openapi.project.Project;
-import com.intellij.psi.PsiClass;
-import com.intellij.psi.PsiField;
-import com.intellij.psi.PsiMethod;
+import com.intellij.psi.*;
 import generate.tostring.GenerateToStringContext;
 import generate.tostring.GenerateToStringUtils;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 import generate.tostring.util.StringUtil;
+import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
@@ -60,10 +60,12 @@ public class ClassHasNoToStringMethodInspection extends AbstractToStringInsepcti
     /** User options for excluded abstract classes */
     public boolean excludeAbstract = false; // must be public for JDOMSerialization
 
+    @NotNull
     public String getDisplayName() {
         return "Class does not overwrite toString() method";
     }
 
+    @NotNull
     public String getShortName() {
         return "ClassHasNoToStringMethod";
     }
@@ -79,7 +81,7 @@ public class ClassHasNoToStringMethodInspection extends AbstractToStringInsepcti
         if (clazz == null || clazz.getName() == null)
             return null;
 
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
         List<ProblemDescriptor> problems = new ArrayList<ProblemDescriptor>();
 
         // must not be an exception
@@ -123,11 +125,13 @@ public class ClassHasNoToStringMethodInspection extends AbstractToStringInsepcti
 
         // get list of fields and getter methods supposed to be dumped in the toString method
         Project project = im.getProject();
-        fields = GenerateToStringUtils.filterAvailableFields(project, psi, GenerateToStringContext.getElementFactory(), clazz, GenerateToStringContext.getConfig().getFilterPattern());
+        PsiManager manager = psi.getPsiManager(project);
+        PsiElementFactory elementFactory = psi.getPsiElemetFactory(manager);
+        fields = GenerateToStringUtils.filterAvailableFields(project, psi, elementFactory, clazz, GenerateToStringContext.getConfig().getFilterPattern());
         PsiMethod[] methods = null;
         if (GenerateToStringContext.getConfig().isEnableMethods()) {
             // okay 'getters in code generation' is enabled so check
-            methods = GenerateToStringUtils.filterAvailableMethods(psi, GenerateToStringContext.getElementFactory(), clazz, GenerateToStringContext.getConfig().getFilterPattern());
+            methods = GenerateToStringUtils.filterAvailableMethods(psi, elementFactory, clazz, GenerateToStringContext.getConfig().getFilterPattern());
         }
 
         // there should be any fields

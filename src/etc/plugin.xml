@@ -7,8 +7,10 @@
     <idea-version since-build="7000"/>
     <change-notes><![CDATA[
         <ul>
-            <li>ID13 - Remove usage of @deprecated IDEA API</li>
+            <li>ID13 - Remove usage of @deprecated IDEA API (partly fixed)</li>
             <li>ID14 - Generated code inserted into wrong place (class javadoc)</li>
+            <li>ID15 - Plugin stops working if two frames are open in Idea 7.0.1</li>
+            <li>ID16 - Internal IDE exception thrown for IDEA 7.0.1 (build #7364)</li>
         </ul>]]>
     </change-notes>
     <application-components>

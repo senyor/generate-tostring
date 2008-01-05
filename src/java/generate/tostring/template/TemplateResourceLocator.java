@@ -16,9 +16,9 @@
 package generate.tostring.template;
 
 import com.intellij.openapi.application.PathManager;
-import org.apache.log4j.Logger;
 import generate.tostring.exception.TemplateResourceException;
 import generate.tostring.util.FileUtil;
+import org.apache.log4j.Logger;
 
 import java.io.File;
 import java.io.IOException;

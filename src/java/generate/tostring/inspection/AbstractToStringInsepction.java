@@ -16,8 +16,8 @@
 package generate.tostring.inspection;
 
 import com.intellij.codeInspection.LocalInspectionTool;
-import org.apache.log4j.Logger;
 import generate.tostring.GenerateToStringContext;
+import org.apache.log4j.Logger;
 
 /**
  * Base class for inspection support.

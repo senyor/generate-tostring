@@ -20,8 +20,8 @@ import com.intellij.psi.PsiElementFactory;
 import com.intellij.psi.PsiMethod;
 import com.intellij.psi.codeStyle.CodeStyleManager;
 import com.intellij.util.IncorrectOperationException;
-import generate.tostring.GenerateToStringContext;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 
 /**
  * This policy is to create a duplicate <code>toString</code> method.
@@ -48,7 +48,7 @@ public class DuplicatePolicy implements ConflictResolutionPolicy {
     }
 
     public boolean applyJavaDoc(PsiClass clazz, PsiMethod newMethod, PsiElementFactory elementFactory, CodeStyleManager codeStyleManager, String existingJavaDoc, String newJavaDoc) throws IncorrectOperationException {
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
         String text = newJavaDoc != null ? newJavaDoc : existingJavaDoc; // prefer to use new javadoc
 
         if (psi.addOrReplaceJavadoc(elementFactory, codeStyleManager, newMethod, text, true) != null) {

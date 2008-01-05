@@ -15,7 +15,6 @@
  */
 package generate.tostring.psi;
 
-import org.apache.log4j.Logger;
 import generate.tostring.psi.idea7.PsiAdapter7;
 
 /**

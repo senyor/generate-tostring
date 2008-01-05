@@ -114,72 +114,91 @@ public class DummyCompleteTestBean implements Serializable {
     /**
      * Hello Claus this is DummyCompleteTestBean speaking!
      */
+    @Override
     public String toString() {
-        return "DummyCompleteTestBean{" +
-                "doNotStreamMe=" + doNotStreamMe +
-                ", _byte=" + _byte +
-                ", _boolean=" + _boolean +
-                ", _char=" + _char +
-                ", _double=" + _double +
-                ", _float=" + _float +
-                ", _int=" + _int +
-                ", _long=" + _long +
-                ", _short=" + _short +
-                ", _byteArr=" + _byteArr +
-                ", _booleanArr=" + _booleanArr +
-                ", _charArr=" + _charArr +
-                ", _doubleArr=" + _doubleArr +
-                ", _floatArr=" + _floatArr +
-                ", _intArr=" + _intArr +
-                ", _longArr=" + _longArr +
-                ", _shortArr=" + _shortArr +
-                ", _byteObj=" + _byteObj +
-                ", _booleanObj=" + _booleanObj +
-                ", _charObj=" + _charObj +
-                ", _doubleObj=" + _doubleObj +
-                ", _floatObj=" + _floatObj +
-                ", _intObj=" + _intObj +
-                ", _longObj=" + _longObj +
-                ", _shortObj=" + _shortObj +
-                ", _byteObjArr=" + (_byteObjArr == null ? null : Arrays.asList(_byteObjArr)) +
-                ", _booleanObjArr=" + (_booleanObjArr == null ? null : Arrays.asList(_booleanObjArr)) +
-                ", _charObjArr=" + (_charObjArr == null ? null : Arrays.asList(_charObjArr)) +
-                ", _doubleObjArr=" + (_doubleObjArr == null ? null : Arrays.asList(_doubleObjArr)) +
-                ", _floatObjArr=" + (_floatObjArr == null ? null : Arrays.asList(_floatObjArr)) +
-                ", _intObjArr=" + (_intObjArr == null ? null : Arrays.asList(_intObjArr)) +
-                ", _longObjArr=" + (_longObjArr == null ? null : Arrays.asList(_longObjArr)) +
-                ", _shortObjArr=" + (_shortObjArr == null ? null : Arrays.asList(_shortObjArr)) +
-                ", _private_object=" + _private_object +
-                ", _public_object=" + _public_object +
-                ", _protected_object=" + _protected_object +
-                ", _packagescope_object=" + _packagescope_object +
-                ", _objArr=" + (_objArr == null ? null : Arrays.asList(_objArr)) +
-                ", nameString='" + nameString + '\'' +
-                ", nameStrings=" + (nameStrings == null ? null : Arrays.asList(nameStrings)) +
-                ", collection=" + collection +
-                ", list=" + list +
-                ", map=" + map +
-                ", sortedMap=" + sortedMap +
-                ", set=" + set +
-                ", sortedSet=" + sortedSet +
-                ", vector=" + vector +
-                ", arrayList=" + arrayList +
-                ", linkedList=" + linkedList +
-                ", hashMap=" + hashMap +
-                ", hashtable=" + hashtable +
-                ", treeMap=" + treeMap +
-                ", linkedHashMap=" + linkedHashMap +
-                ", hashSet=" + hashSet +
-                ", treeSet=" + treeSet +
-                ", linkedHashSet=" + linkedHashSet +
-                ", _string='" + _string + '\'' +
-                ", _utilDate=" + _utilDate +
-                ", _sqlDate=" + _sqlDate +
-                ", _sqlTime=" + _sqlTime +
-                ", _sqlTimestamp=" + _sqlTimestamp +
-                ", bigDecimal=" + bigDecimal +
-                ", bigInteger=" + bigInteger +
-                '}';
+        final StringBuilder sb = new StringBuilder();
+        sb.append("DummyCompleteTestBean");
+        sb.append("{doNotStreamMe=").append(doNotStreamMe);
+        sb.append(", _byte=").append(_byte);
+        sb.append(", _boolean=").append(_boolean);
+        sb.append(", _char=").append(_char);
+        sb.append(", _double=").append(_double);
+        sb.append(", _float=").append(_float);
+        sb.append(", _int=").append(_int);
+        sb.append(", _long=").append(_long);
+        sb.append(", _short=").append(_short);
+        sb.append(", _byteArr=").append(_byteArr == null ? "null" : "");
+        for (int i = 0; _byteArr != null && i < _byteArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_byteArr[i]);
+        sb.append(", _booleanArr=").append(_booleanArr == null ? "null" : "");
+        for (int i = 0; _booleanArr != null && i < _booleanArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_booleanArr[i]);
+        sb.append(", _charArr=").append(_charArr == null ? "null" : "");
+        for (int i = 0; _charArr != null && i < _charArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_charArr[i]);
+        sb.append(", _doubleArr=").append(_doubleArr == null ? "null" : "");
+        for (int i = 0; _doubleArr != null && i < _doubleArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_doubleArr[i]);
+        sb.append(", _floatArr=").append(_floatArr == null ? "null" : "");
+        for (int i = 0; _floatArr != null && i < _floatArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_floatArr[i]);
+        sb.append(", _intArr=").append(_intArr == null ? "null" : "");
+        for (int i = 0; _intArr != null && i < _intArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_intArr[i]);
+        sb.append(", _longArr=").append(_longArr == null ? "null" : "");
+        for (int i = 0; _longArr != null && i < _longArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_longArr[i]);
+        sb.append(", _shortArr=").append(_shortArr == null ? "null" : "");
+        for (int i = 0; _shortArr != null && i < _shortArr.length; ++i)
+            sb.append(i == 0 ? "" : ", ").append(_shortArr[i]);
+        sb.append(", _byteObj=").append(_byteObj);
+        sb.append(", _booleanObj=").append(_booleanObj);
+        sb.append(", _charObj=").append(_charObj);
+        sb.append(", _doubleObj=").append(_doubleObj);
+        sb.append(", _floatObj=").append(_floatObj);
+        sb.append(", _intObj=").append(_intObj);
+        sb.append(", _longObj=").append(_longObj);
+        sb.append(", _shortObj=").append(_shortObj);
+        sb.append(", _byteObjArr=").append(_byteObjArr == null ? "null" : Arrays.asList(_byteObjArr).toString());
+        sb.append(", _booleanObjArr=").append(_booleanObjArr == null ? "null" : Arrays.asList(_booleanObjArr).toString());
+        sb.append(", _charObjArr=").append(_charObjArr == null ? "null" : Arrays.asList(_charObjArr).toString());
+        sb.append(", _doubleObjArr=").append(_doubleObjArr == null ? "null" : Arrays.asList(_doubleObjArr).toString());
+        sb.append(", _floatObjArr=").append(_floatObjArr == null ? "null" : Arrays.asList(_floatObjArr).toString());
+        sb.append(", _intObjArr=").append(_intObjArr == null ? "null" : Arrays.asList(_intObjArr).toString());
+        sb.append(", _longObjArr=").append(_longObjArr == null ? "null" : Arrays.asList(_longObjArr).toString());
+        sb.append(", _shortObjArr=").append(_shortObjArr == null ? "null" : Arrays.asList(_shortObjArr).toString());
+        sb.append(", _private_object=").append(_private_object);
+        sb.append(", _public_object=").append(_public_object);
+        sb.append(", _protected_object=").append(_protected_object);
+        sb.append(", _packagescope_object=").append(_packagescope_object);
+        sb.append(", _objArr=").append(_objArr == null ? "null" : Arrays.asList(_objArr).toString());
+        sb.append(", nameString='").append(nameString).append('\'');
+        sb.append(", nameStrings=").append(nameStrings == null ? "null" : Arrays.asList(nameStrings).toString());
+        sb.append(", collection=").append(collection);
+        sb.append(", list=").append(list);
+        sb.append(", map=").append(map);
+        sb.append(", sortedMap=").append(sortedMap);
+        sb.append(", set=").append(set);
+        sb.append(", sortedSet=").append(sortedSet);
+        sb.append(", vector=").append(vector);
+        sb.append(", arrayList=").append(arrayList);
+        sb.append(", linkedList=").append(linkedList);
+        sb.append(", hashMap=").append(hashMap);
+        sb.append(", hashtable=").append(hashtable);
+        sb.append(", treeMap=").append(treeMap);
+        sb.append(", linkedHashMap=").append(linkedHashMap);
+        sb.append(", hashSet=").append(hashSet);
+        sb.append(", treeSet=").append(treeSet);
+        sb.append(", linkedHashSet=").append(linkedHashSet);
+        sb.append(", _string='").append(_string).append('\'');
+        sb.append(", _utilDate=").append(_utilDate);
+        sb.append(", _sqlDate=").append(_sqlDate);
+        sb.append(", _sqlTime=").append(_sqlTime);
+        sb.append(", _sqlTimestamp=").append(_sqlTimestamp);
+        sb.append(", bigDecimal=").append(bigDecimal);
+        sb.append(", bigInteger=").append(bigInteger);
+        sb.append('}');
+        return sb.toString();
     }
 
 }

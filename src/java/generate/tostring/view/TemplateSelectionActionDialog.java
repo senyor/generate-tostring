@@ -20,10 +20,10 @@ import com.intellij.openapi.project.Project;
 import com.intellij.psi.PsiClass;
 import generate.tostring.GenerateToStringActionHandler;
 import generate.tostring.GenerateToStringActionHandlerImpl;
-import generate.tostring.GenerateToStringContext;
 import generate.tostring.GenerateToStringUtils;
 import generate.tostring.config.InsertNewMethodPolicy;
 import generate.tostring.psi.PsiAdapter;
+import generate.tostring.psi.PsiAdapterFactory;
 import generate.tostring.template.TemplateResource;
 import generate.tostring.template.TemplateResourceLocator;
 
@@ -102,7 +102,7 @@ public class TemplateSelectionActionDialog extends BaseQuickSelectionDialog {
      * @param template  the choosen template
      */
     private void executeGenerateActionLater(final TemplateResource template) {
-        PsiAdapter psi = GenerateToStringContext.getPsi();
+        PsiAdapter psi = PsiAdapterFactory.getPsiAdapter();
         Runnable writeCommand = new Runnable() {
             public void run() {
                 ApplicationManager.getApplication().runWriteAction(new Runnable() {
