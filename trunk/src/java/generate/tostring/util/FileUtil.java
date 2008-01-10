@@ -29,11 +29,11 @@ public class FileUtil {
     }
 
     /**
-     * Reads the files content and return it as a String.
-     * <p/>Uses the contect classloader from the current thread.
+     * Reads the content of the resource and return it as a String.
+     * <p/>Uses the classloader that loaded this class to find the resource in its classpath.
      *
      * @param resource the resouce name. Will lookup using the classpath.
-     * @return the content
+     * @return the content if the resource
      * @throws IOException   error reading the file.
      */
     public static String readFile(String resource) throws IOException {
@@ -49,8 +49,16 @@ public class FileUtil {
      * @throws IOException   error reading file.
      */
     public static String readFile(File file) throws IOException {
-        BufferedInputStream in = new BufferedInputStream(new FileInputStream(file));
-        return readFileContent(in);
+        FileInputStream fis = null;
+        BufferedInputStream in = null;
+        try {
+            fis = new FileInputStream( file );
+            in = new BufferedInputStream( fis );
+            return readFileContent( in );
+        } finally {
+            if (in != null) in.close();
+            if (fis != null) fis.close();
+        }
     }
 
     /**
@@ -96,8 +104,9 @@ public class FileUtil {
     public static String getFileExtension(String filename) {
         File file = new File(filename);
         int pos = file.getName().lastIndexOf(".");
-        if (pos == -1)
+        if (pos == -1) {
             return null; // no extension
+        }
 
         return filename.substring(pos + 1); // return the extension
     }
@@ -129,10 +138,11 @@ public class FileUtil {
      */
     public static String stripFilename(String filename) {
         int pos = filename.lastIndexOf(File.separatorChar);
-        if (pos != -1)
+        if (pos != -1) {
             return filename.substring(pos + 1);
-        else
+        } else {
             return filename;
+        }
     }
 
 }
