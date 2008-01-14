@@ -29,6 +29,7 @@ Full documentation included (Click the link from Settings).
 
 Ideas:
 ======
+- Groovy support
 - Screenshot of run toString() inspections (non on-the-fly)
 - Screenshot of using quick template selection list
 - Include screenshots in plugin documentation
