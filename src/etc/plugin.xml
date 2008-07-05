@@ -8,6 +8,7 @@
     <change-notes><![CDATA[
         <ul>
             <li>ID17 - Proper resource handling for loading template files</li>
+            <li>ID21 - $member.typeName and $member.typeQualifiedName did not handle generic and primitve types</li>
         </ul>]]>
     </change-notes>
     <application-components>

@@ -42,7 +42,6 @@ public class GenerateToStringAction extends EditorAction {
         super(new GenerateToStringActionHandlerImpl()); // register our action handler
     }
 
-
     /**
      * Updates the presentation of this action. Will disable this action for non-java files.
      *
@@ -72,6 +71,7 @@ public class GenerateToStringAction extends EditorAction {
     }
 
     protected GenerateToStringAction(EditorActionHandler editorActionHandler) {
-    super(editorActionHandler);    //To change body of overridden methods use File | Settings | File Templates.
-}
+        super(editorActionHandler);
+    }
+    
 }

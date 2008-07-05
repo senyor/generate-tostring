@@ -1,6 +1,7 @@
-v4.0.6 for IDEA 7.x
-===================
+v4.0.6 for IDEA 7.x (05-juli-2008)
+==================================
 - [BUG] ID17: Proper resource handling for loading template files
+- [BUG] ID21: $member.typeName and $member.typeQualifiedName did not handle generic and primitve types
 
 v4.0.5 for IDEA 7.x (05-jan-2008)
 =================================

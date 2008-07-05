@@ -549,17 +549,33 @@ public abstract class PsiAdapter {
      * @see #getTypeClassName(com.intellij.psi.PsiType) for the non qualified version.
      */
     public String getTypeQualifiedClassName(PsiType type) {
+        // special for primitives
         if (isPrimitiveType(type)) {
-            return null;
+            return getPrimitiveQualifiedTypeName(type);
         }
 
-        // avoid [] if the type is an array
         String name = type.getCanonicalText();
         if (name.endsWith("[]")) {
+            // avoid [] if the type is an array
             return name.substring(0, name.length() - 2);
         }
 
+        if (isSimpleGenericType(type)) {
+            // handle simple generics
+            return StringUtil.middle(name, "<", ">");
+        }
+
         return name;
+    }
+
+    /**
+     * Is it a simple generics type (contain only one < and > in the qualified name)
+     * @param type the type.
+     * @return
+     */
+    public boolean isSimpleGenericType(PsiType type) {
+        String name = type.getCanonicalText();
+        return (StringUtil.countTokens(name, '<') == 1 && StringUtil.countTokens(name, '>') == 1);
     }
 
     /**
@@ -580,6 +596,7 @@ public abstract class PsiAdapter {
         int i = name.lastIndexOf('.');
         return name.substring(i + 1, name.length());
     }
+
 
     /**
      * Removes the action from the menu.
@@ -1219,6 +1236,38 @@ public abstract class PsiAdapter {
         }
 
         return false;
+    }
+
+    /**
+     * Gets the qualified type name of the primitive type (eg: java.lang.Integer)
+     *
+     * @param type  the type.
+     * @return the qualified type name, <tt>null</tt> if not a primitive.
+     */
+    public String getPrimitiveQualifiedTypeName(PsiType type) {
+        if (! isPrimitiveType(type)) {
+            return null;
+        }
+
+        if (type.isAssignableFrom(PsiType.BOOLEAN)) {
+            return "java.lang.Boolean";
+        } else if (type.isAssignableFrom(PsiType.BYTE)) {
+            return "java.lang.Byte";
+        } else if (type.isAssignableFrom(PsiType.CHAR)) {
+            return "java.lang.Character";
+        } else if (type.isAssignableFrom(PsiType.DOUBLE)) {
+            return "java.lang.Double";
+        } else if (type.isAssignableFrom(PsiType.FLOAT)) {
+            return "java.lang.Float";
+        } else if (type.isAssignableFrom(PsiType.INT)) {
+            return "java.lang.Integer";
+        } else if (type.isAssignableFrom(PsiType.LONG)) {
+            return "java.lang.Long";
+        } else if (type.isAssignableFrom(PsiType.SHORT)) {
+            return "java.lang.Short";
+        }
+
+        return null;
     }
 
     /**
