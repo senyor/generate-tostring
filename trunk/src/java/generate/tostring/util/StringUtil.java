@@ -115,11 +115,28 @@ public class StringUtil {
      * @return  the part of s that is after the token.
      */
     public static String after(String s, String token) {
+        return after(s, token, false);
+    }
+
+    /**
+     * Returns the part of s after the last token.
+     *
+     * @param s   the string to test.
+     * @param token   the token.
+     * @param last should scan for last token, if not then the first token.
+     * @return  the part of s that is after the token.
+     */
+    public static String after(String s, String token, boolean last) {
         if (s == null) {
             return null;
         }
 
-        int i = s.indexOf(token);
+        int i;
+        if (last) {
+            i = s.lastIndexOf(token);
+        } else {
+            i = s.indexOf(token);
+        }
         if (i == -1) {
             return s;
         }
@@ -204,6 +221,23 @@ public class StringUtil {
         }
 
         return sb.toString();
+    }
+
+    /**
+     * Counts the number of tokens in the string.
+     * 
+     * @param s  the string
+     * @param token  the token to count
+     * @return number of tokens found
+     */
+    public static int countTokens(String s, char token) {
+        int cnt = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == token) {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
 }
