@@ -2,13 +2,12 @@
 <idea-plugin url="http://code.google.com/p/generate-tostring">
     <name>GenerateToString</name>
     <description>Adds a new action 'toString()' in the generate menu (alt + ins). The action generates a toString() method that dumps the classes fields. Java body code is generated using Velocity Macro and you can change this to fit your needs. The plugin has it's own settings (ctrl + alt + s). Full documentation included (Click hyperlink from Settings).</description>
-    <version>4.0.6</version>
+    <version>4.0.7</version>
     <vendor email="cib_rejse@yahoo.dk" url="http://generate-tostring.googlecode.com">Claus Ibsen</vendor>
     <idea-version since-build="7000"/>
     <change-notes><![CDATA[
         <ul>
-            <li>ID17 - Proper resource handling for loading template files</li>
-            <li>ID21 - $member.typeName and $member.typeQualifiedName did not handle generic and primitve types</li>
+            <li>ID22 - Compiled with JDK1.5 so Mac users can use it again - sorry please give me a macbook pro ;)</li>
         </ul>]]>
     </change-notes>
     <application-components>
