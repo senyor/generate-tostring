@@ -1,3 +1,7 @@
+v4.0.7 for IDEA 7.x (10-juli-2008)
+==================================
+- [BUG] ID22: Compiled with JDK1.5 so Mac users can use it again - sorry please give me a macbook pro ;)
+
 v4.0.6 for IDEA 7.x (05-juli-2008)
 ==================================
 - [BUG] ID17: Proper resource handling for loading template files

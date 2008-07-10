@@ -15,8 +15,8 @@
     <property name="compile.debug" value="true"/>
     <property name="compile.deprecation" value="true"/>
     <property name="compile.optimize" value="true"/>
-    <property name="compile.target" value="1.6"/>
-    <property name="compile.source" value="1.6"/>
+    <property name="compile.target" value="1.5"/>
+    <property name="compile.source" value="1.5"/>
     <path id="project7.classpath">
         <fileset dir="d:\idea7\lib" includes="*.jar"/>
     </path>
